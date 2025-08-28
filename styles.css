@@ -1123,6 +1123,16 @@ html {
 .neo { filter: saturate(110%); }
 .tilt-mini { transform-style: preserve-3d; perspective: 600px; }
 
+/* QR Modal */
+.modal { display: none; position: fixed; inset: 0; z-index: 1200; }
+.modal.show { display: block; }
+.modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.55); -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px); }
+.modal-content { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); background: var(--card); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 16px; width: min(90vw, 380px); box-shadow: 0 20px 50px rgba(0,0,0,0.6); text-align: center; }
+.modal-title { margin: 6px 0 10px; }
+.qr-image { width: 100%; height: auto; border-radius: 10px; background: #fff; }
+.modal-note { color: var(--muted); margin: 8px 0 0; font-size: 0.9rem; }
+.modal-close { position: absolute; right: 10px; top: 8px; background: transparent; border: none; color: var(--text); font-size: 22px; cursor: pointer; }
+
 /* Responsive design */
 @media (max-width: 1024px) {
   .skills-grid { grid-template-columns: 1fr 1fr; }
