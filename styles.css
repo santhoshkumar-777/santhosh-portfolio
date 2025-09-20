@@ -8,6 +8,17 @@
   --primary-strong: #24c1ea;
   --accent: #a78bfa;
   --ring: rgba(110, 231, 255, 0.35);
+  
+  /* Skills Section Colors */
+  --skills-bg: linear-gradient(135deg, #1a1f2e 0%, #0f1419 100%);
+  --skills-card-bg: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.6));
+  --skills-border: rgba(99, 102, 241, 0.3);
+  --skills-primary: #8b5cf6;
+  --skills-secondary: #06b6d4;
+  --skills-accent: #f59e0b;
+  --skills-glow: rgba(139, 92, 246, 0.4);
+  --skills-text: #f1f5f9;
+  --skills-muted: #94a3b8;
 }
 
 * {
@@ -36,6 +47,7 @@ html, body {
   position: relative;
   overflow: hidden;
   transform: scale(1);
+  cursor: pointer;
 }
 
 .nav-links a::before {
@@ -76,6 +88,355 @@ html, body {
 
 .nav-links a.active::before {
   left: 100%;
+}
+
+/* Ripple effect animation */
+@keyframes rippleEffect {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Enhanced navigation link interactions */
+.nav-links a {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(110, 231, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.nav-links a:active::after {
+  width: 100px;
+  height: 100px;
+}
+
+/* Smooth section highlighting */
+section {
+  transition: filter 0.3s ease;
+}
+
+section.highlighted {
+  filter: brightness(1.1) contrast(1.05);
+}
+
+/* Enhanced scroll indicator pulse */
+@keyframes scrollDotPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(110, 231, 255, 0.7);
+  }
+  70% {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 10px rgba(110, 231, 255, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(110, 231, 255, 0);
+  }
+}
+
+.scroll-dot.pulse {
+  animation: scrollDotPulse 0.6s ease;
+}
+
+/* Resume Button */
+.resume-btn {
+  position: fixed;
+  top: 100px;
+  right: 30px;
+  z-index: 1000;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 25px rgba(110, 231, 255, 0.3);
+  overflow: visible;
+}
+
+.resume-btn:hover {
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 12px 35px rgba(110, 231, 255, 0.5);
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+}
+
+.resume-btn:active {
+  transform: translateY(-1px) scale(1.05);
+}
+
+.resume-icon {
+  width: 28px;
+  height: 28px;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.resume-btn:hover .resume-icon {
+  transform: scale(1.1);
+}
+
+.resume-tooltip {
+  position: absolute;
+  top: 50%;
+  right: 70px;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.resume-tooltip::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid rgba(0, 0, 0, 0.8);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+
+.resume-btn:hover .resume-tooltip {
+  opacity: 1;
+  visibility: visible;
+  right: 80px;
+}
+
+/* Resume Modal Styles */
+.resume-modal-content {
+  max-width: 900px;
+  width: 90%;
+  max-height: 90vh;
+  background: rgba(15, 23, 42, 0.95);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(110, 231, 255, 0.2);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+.resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background: rgba(110, 231, 255, 0.1);
+  border-bottom: 1px solid rgba(110, 231, 255, 0.2);
+}
+
+.resume-header .modal-title {
+  margin: 0;
+  color: var(--primary);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.download-btn {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(110, 231, 255, 0.3);
+}
+
+.download-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(110, 231, 255, 0.5);
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+}
+
+.download-btn:active {
+  transform: translateY(0);
+}
+
+.download-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.download-btn:hover svg {
+  transform: translateY(2px);
+}
+
+.resume-body {
+  padding: 30px;
+  max-height: calc(90vh - 100px);
+  overflow-y: auto;
+}
+
+.resume-viewer {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resume-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.resume-placeholder {
+  text-align: center;
+  color: var(--muted);
+  padding: 40px;
+}
+
+.placeholder-icon {
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.placeholder-icon svg {
+  color: var(--primary);
+}
+
+.resume-placeholder h3 {
+  margin: 0 0 10px 0;
+  color: var(--text);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.resume-placeholder p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.upload-hint {
+  color: var(--accent);
+  font-size: 14px;
+  margin-top: 15px;
+  opacity: 0.8;
+}
+
+/* Resume Button Animations */
+@keyframes resumeFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.resume-btn {
+  animation: resumeFloat 3s ease-in-out infinite;
+}
+
+.resume-btn:hover {
+  animation: none;
+}
+
+/* Responsive design for resume modal */
+@media (max-width: 768px) {
+  .resume-btn {
+    top: 80px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .resume-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .resume-tooltip {
+    display: none;
+  }
+  
+  .resume-modal-content {
+    width: 95%;
+    max-height: 95vh;
+  }
+  
+  .resume-header {
+    padding: 15px 20px;
+  }
+  
+  .resume-header .modal-title {
+    font-size: 20px;
+  }
+  
+  .download-btn {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+  
+  .resume-body {
+    padding: 20px;
+    max-height: calc(95vh - 80px);
+  }
+  
+  .resume-placeholder {
+    padding: 20px;
+  }
+  
+  .resume-placeholder h3 {
+    font-size: 20px;
+  }
+}
+
+/* Resume modal open animation */
+.modal.resume-modal-open .resume-modal-content {
+  animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 /* Creative scroll indicator */
@@ -410,15 +771,168 @@ html {
 .timeline .dot { position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 6px rgba(167,139,250,0.15); }
 .timeline .time { color: var(--muted); font-size: 0.9rem; }
 
-.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+/* Skills Section Enhanced Styles */
+#skills {
+  background: var(--skills-bg);
+  position: relative;
+  overflow: hidden;
+}
 
-.progress { display: grid; grid-template-columns: 110px 1fr; align-items: center; gap: 10px; margin: 10px 0; }
-.progress span { color: var(--muted); font-size: 0.95rem; }
-.progress .bar { height: 10px; background: #0e131a; border-radius: 999px; border: 1px solid rgba(255,255,255,0.06); overflow: hidden; }
-.progress .bar > div { height: 100%; background: linear-gradient(90deg, var(--accent), var(--primary)); border-right: 1px solid rgba(0,0,0,0.2); box-shadow: 0 0 12px var(--ring) inset; transform-origin: left; transform: scaleX(0); transition: transform 900ms ease 120ms; }
-.reveal.visible .progress .bar > div { transform: scaleX(1); }
+#skills::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
 
-/* Skill width utility classes (replaces inline styles) */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.skills-group {
+  background: var(--skills-card-bg);
+  border: 1px solid var(--skills-border);
+  border-radius: 20px;
+  padding: 24px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(139, 92, 246, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.skills-group::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.skills-group:hover::before {
+  left: 100%;
+}
+
+.skills-group:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 16px 48px rgba(139, 92, 246, 0.3),
+    0 0 0 1px rgba(139, 92, 246, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-color: var(--skills-primary);
+}
+
+.skills-group h3 {
+  color: var(--skills-text);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.skills-group h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--skills-primary), var(--skills-secondary));
+  border-radius: 2px;
+}
+
+/* Enhanced Progress Bars */
+.progress {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0;
+  position: relative;
+}
+
+.progress span {
+  color: var(--skills-muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.progress .bar {
+  height: 12px;
+  background: rgba(30, 41, 59, 0.6);
+  border-radius: 999px;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.progress .bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    rgba(139, 92, 246, 0.1), 
+    rgba(6, 182, 212, 0.1), 
+    rgba(245, 158, 11, 0.1));
+  border-radius: 999px;
+}
+
+.progress .bar > div {
+  height: 100%;
+  background: linear-gradient(90deg, var(--skills-primary), var(--skills-secondary));
+  border-radius: 999px;
+  position: relative;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+  box-shadow: 
+    0 0 20px var(--skills-glow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.progress .bar > div::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4));
+  border-radius: 0 999px 999px 0;
+}
+
+.reveal.visible .progress .bar > div {
+  transform: scaleX(1);
+}
+
+/* Skill width utility classes */
 .w-92 { width: 92%; }
 .w-88 { width: 88%; }
 .w-85 { width: 85%; }
@@ -427,8 +941,153 @@ html {
 .w-75 { width: 75%; }
 .w-70 { width: 70%; }
 
-.badges { display: flex; flex-wrap: wrap; gap: 10px; }
-.badge { padding: 8px 10px; border-radius: 999px; font-size: 0.9rem; color: #0c1218; background: linear-gradient(180deg, var(--primary), var(--primary-strong)); box-shadow: 0 6px 18px var(--ring); }
+/* Enhanced Badges */
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.badge {
+  padding: 10px 16px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--skills-text);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2));
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  box-shadow: 
+    0 4px 12px rgba(139, 92, 246, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.badge:hover::before {
+  left: 100%;
+}
+
+.badge:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(6, 182, 212, 0.3));
+  box-shadow: 
+    0 8px 20px rgba(139, 92, 246, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-color: var(--skills-primary);
+}
+
+.badge:nth-child(1) { background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(139, 92, 246, 0.3)); }
+.badge:nth-child(2) { background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(6, 182, 212, 0.3)); }
+.badge:nth-child(3) { background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.3)); }
+.badge:nth-child(4) { background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(239, 68, 68, 0.3)); }
+
+/* Additional micro-interactions for skills section */
+.skills-group {
+  animation: skillsCardEntrance 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes skillsCardEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.skills-group:nth-child(1) { animation-delay: 0.1s; }
+.skills-group:nth-child(2) { animation-delay: 0.2s; }
+.skills-group:nth-child(3) { animation-delay: 0.3s; }
+
+/* Progress bar hover effect */
+.progress:hover .bar > div {
+  filter: brightness(1.2) saturate(1.1);
+  box-shadow: 
+    0 0 30px var(--skills-glow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Skill text hover effect */
+.progress:hover span {
+  color: var(--skills-text);
+  transform: translateX(4px);
+  transition: all 0.3s ease;
+}
+
+/* Skills section glow effect when in view */
+#skills.in-view {
+  animation: skillsSectionGlow 1s ease-out;
+}
+
+@keyframes skillsSectionGlow {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.1) contrast(1.05);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+/* Enhanced badge animations */
+.badge {
+  animation: badgeEntrance 0.6s ease-out forwards;
+  opacity: 0;
+  transform: scale(0.8) translateY(10px);
+}
+
+@keyframes badgeEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.badge:nth-child(1) { animation-delay: 0.1s; }
+.badge:nth-child(2) { animation-delay: 0.2s; }
+.badge:nth-child(3) { animation-delay: 0.3s; }
+.badge:nth-child(4) { animation-delay: 0.4s; }
+
+/* Interactive pulse effect on badge click */
+.badge:active {
+  animation: badgePulse 0.4s ease-out;
+}
+
+@keyframes badgePulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
 .cards { display: grid; grid-template-columns: repeat(2, 1fr); }
 .service .icon { width: 44px; height: 44px; display: grid; place-items: center; color: var(--primary); background: rgba(110,231,255,0.08); border: 1px solid rgba(110,231,255,0.25); border-radius: 12px; }
@@ -1166,4 +1825,462 @@ html {
   .nav-links.show { display: flex; }
 }
 
+/* Enhanced Desktop and Tablet Responsive Design */
 
+/* Large Desktop Screens (1440px and above) */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1400px;
+    padding: 0 40px;
+  }
+  
+  .hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+  
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+  
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  
+  .project-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  
+  /* Enhanced resume button for large screens */
+  .resume-btn {
+    width: 70px;
+    height: 70px;
+    top: 40px;
+    right: 60px;
+  }
+  
+  .resume-btn svg {
+    width: 32px;
+    height: 32px;
+  }
+  
+  /* Larger modal for big screens */
+  .resume-modal-content {
+    max-width: 1200px;
+    max-height: 85vh;
+  }
+  
+  /* Enhanced navigation spacing */
+  .nav-links {
+    gap: 40px;
+  }
+  
+  /* Larger scroll indicators */
+  .scroll-indicator {
+    width: 12px;
+    height: 12px;
+  }
+  
+  /* Enhanced animations for large screens */
+  .nav-link:hover {
+    transform: translateY(-3px) scale(1.05);
+  }
+  
+  .project-card:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+/* Standard Desktop (1200px - 1439px) */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .container {
+    max-width: 1200px;
+    padding: 0 30px;
+  }
+  
+  .hero-grid {
+    gap: 60px;
+  }
+  
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  
+  .project-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+  }
+  
+  /* Resume button positioning */
+  .resume-btn {
+    width: 65px;
+    height: 65px;
+    top: 35px;
+    right: 50px;
+  }
+  
+  .resume-btn svg {
+    width: 30px;
+    height: 30px;
+  }
+  
+  /* Modal sizing */
+  .resume-modal-content {
+    max-width: 1000px;
+  }
+}
+
+/* Tablet Landscape (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .container {
+    max-width: 960px;
+    padding: 0 25px;
+  }
+  
+  .hero-grid {
+    gap: 50px;
+  }
+  
+  .about-grid {
+    gap: 40px;
+  }
+  
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+  
+  /* Resume button adjustments */
+  .resume-btn {
+    width: 60px;
+    height: 60px;
+    top: 30px;
+    right: 40px;
+  }
+  
+  .resume-btn svg {
+    width: 28px;
+    height: 28px;
+  }
+  
+  /* Navigation adjustments */
+  .nav-links {
+    gap: 30px;
+  }
+  
+  /* Modal sizing */
+  .resume-modal-content {
+    max-width: 900px;
+  }
+}
+
+/* Tablet Portrait (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .container {
+    max-width: 720px;
+    padding: 0 20px;
+  }
+  
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+  
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+  
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+  
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  /* Resume button for tablet */
+  .resume-btn {
+    width: 55px;
+    height: 55px;
+    top: 25px;
+    right: 30px;
+  }
+  
+  .resume-btn svg {
+    width: 26px;
+    height: 26px;
+  }
+  
+  /* Navigation adjustments */
+  .nav-links {
+    gap: 25px;
+  }
+  
+  /* Modal sizing */
+  .resume-modal-content {
+    max-width: 800px;
+    width: 95%;
+  }
+  
+  /* Enhanced scroll indicators */
+  .scroll-indicator {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* Small Tablet and Large Mobile (600px - 767px) */
+@media (min-width: 600px) and (max-width: 767px) {
+  .container {
+    max-width: 560px;
+    padding: 0 15px;
+  }
+  
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 30px;
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  /* Resume button adjustments */
+  .resume-btn {
+    width: 50px;
+    height: 50px;
+    top: 20px;
+    right: 20px;
+  }
+  
+  .resume-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* Modal sizing */
+  .resume-modal-content {
+    max-width: 700px;
+    width: 95%;
+  }
+  
+  /* Navigation adjustments */
+  .nav-links {
+    gap: 20px;
+  }
+}
+
+/* Ultra-wide screens (1920px and above) */
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1800px;
+    padding: 0 60px;
+  }
+  
+  .hero-grid {
+    gap: 100px;
+  }
+  
+  .about-grid {
+    gap: 80px;
+  }
+  
+  .skills-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+  }
+  
+  .project-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+  }
+  
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+  
+  /* Extra large resume button */
+  .resume-btn {
+    width: 80px;
+    height: 80px;
+    top: 50px;
+    right: 80px;
+  }
+  
+  .resume-btn svg {
+    width: 36px;
+    height: 36px;
+  }
+  
+  /* Ultra-wide modal */
+  .resume-modal-content {
+    max-width: 1400px;
+    max-height: 80vh;
+  }
+  
+  /* Enhanced navigation for ultra-wide */
+  .nav-links {
+    gap: 50px;
+  }
+  
+  /* Larger text for ultra-wide screens */
+  h1 {
+    font-size: 4rem;
+  }
+  
+  h2 {
+    font-size: 3rem;
+  }
+  
+  h3 {
+    font-size: 2rem;
+  }
+  
+  /* Enhanced scroll indicators */
+  .scroll-indicator {
+    width: 14px;
+    height: 14px;
+  }
+  
+  /* Enhanced animations */
+  .nav-link:hover {
+    transform: translateY(-4px) scale(1.08);
+  }
+  
+  .project-card:hover {
+    transform: translateY(-10px) scale(1.03);
+  }
+}
+
+/* Enhanced animations for desktop */
+@media (min-width: 992px) {
+  /* Smooth hover transitions */
+  .nav-link {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .project-card {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .skill-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .service-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Enhanced glow effects */
+  .nav-link:hover {
+    box-shadow: 0 8px 25px rgba(110, 231, 255, 0.3);
+  }
+  
+  .project-card:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Resume button enhanced hover */
+  .resume-btn:hover {
+    transform: translateY(-5px) scale(1.15);
+    box-shadow: 0 15px 35px rgba(110, 231, 255, 0.4);
+  }
+  
+  /* Enhanced scroll indicators */
+  .scroll-indicator.active {
+    transform: scale(1.3);
+    box-shadow: 0 0 20px rgba(110, 231, 255, 0.6);
+  }
+  
+  /* Smooth scrolling enhancements */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Enhanced modal animations */
+  .resume-modal-content {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Desktop-specific performance optimizations */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Print styles for desktop */
+@media print {
+  .resume-btn,
+  .nav-toggle,
+  .scroll-indicators,
+  .modal {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .container {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+}
