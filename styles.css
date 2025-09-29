@@ -21,6 +21,46 @@
   --skills-muted: #94a3b8;
 }
 
+/* Lightweight effects for Skills and Contact sections */
+/* Skills: keep subtle entrance and hover */
+#skills .skills-group {
+  animation: fadeInUp 0.45s ease-out both; /* lighter than default */
+}
+
+#skills .skills-group:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.28);
+  border-color: var(--skills-border);
+}
+
+#skills .badge:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 16px rgba(139, 92, 246, 0.25);
+}
+
+#skills .progress:hover .bar > div {
+  filter: none;
+  box-shadow: 0 0 18px var(--skills-glow), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* Contact (Chatter Box): softer focus and hover */
+#contact .card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.28);
+}
+
+#contact .form-field input:focus,
+#contact .form-field textarea:focus {
+  box-shadow: 0 0 0 3px var(--ring);
+  border-color: rgba(110,231,255,0.45);
+  transform: none;
+}
+
+/* Contact page spacing for social strip (moved from inline style) */
+#contact .social-strip {
+  margin-top: 20px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -611,6 +651,8 @@ html {
   align-items: center;
   justify-content: space-between;
   min-height: 64px;
+  position: relative;
+  z-index: 2;
 }
 
 .brand {
@@ -729,6 +771,180 @@ html {
 
 .cta { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
 
+/* Navigation Icons Styling */
+.nav-icons {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.nav-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--muted);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  padding: 1rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  min-width: 80px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.nav-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(110, 231, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.nav-icon:hover::before {
+  left: 100%;
+}
+
+.nav-icon:hover {
+  color: var(--primary);
+  background: rgba(110, 231, 255, 0.1);
+  border-color: rgba(110, 231, 255, 0.3);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(110, 231, 255, 0.2);
+}
+
+.nav-icon:active {
+  transform: translateY(-2px) scale(0.98);
+  transition: transform 0.1s ease;
+}
+
+.icon-svg {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+  stroke-width: 1.5;
+}
+
+.nav-icon:hover .icon-svg {
+  stroke: var(--primary);
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(110, 231, 255, 0.5));
+}
+
+.icon-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.3s ease;
+  opacity: 0.8;
+}
+
+.nav-icon:hover .icon-label {
+  opacity: 1;
+  transform: translateY(2px);
+}
+
+/* Active state for navigation icons */
+.nav-icon.active {
+  color: var(--primary);
+  background: rgba(110, 231, 255, 0.15);
+  border-color: var(--primary);
+  box-shadow: 0 0 20px rgba(110, 231, 255, 0.3);
+}
+
+.nav-icon.active .icon-svg {
+  stroke: var(--primary);
+  filter: drop-shadow(0 0 15px rgba(110, 231, 255, 0.6));
+}
+
+.nav-icon.active .icon-label {
+  opacity: 1;
+  font-weight: 600;
+}
+
+/* Ripple effect for icons */
+.nav-icon {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(110, 231, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.nav-icon:active::after {
+  width: 100px;
+  height: 100px;
+}
+
+/* Floating animation for icons */
+@keyframes iconFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.nav-icon {
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+.nav-icon:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.nav-icon:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.nav-icon:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.nav-icon:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+/* Glow effect on hover */
+@keyframes iconGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(110, 231, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(110, 231, 255, 0.4), 0 0 30px rgba(110, 231, 255, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(110, 231, 255, 0.2);
+  }
+}
+
+.nav-icon:hover {
+  animation: iconGlow 2s ease-in-out infinite;
+}
+
 .btn {
   display: inline-block;
   padding: 10px 16px;
@@ -744,7 +960,12 @@ html {
 
 .btn.primary { background: linear-gradient(180deg, var(--primary), var(--primary-strong)); color: #071018; border-color: transparent; box-shadow: 0 8px 24px var(--ring); }
 
-.btn.ghost { background: transparent; }
+.btn.secondary {
+  background: linear-gradient(135deg, var(--accent), #9d4edd);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 8px 24px rgba(167, 139, 250, 0.3);
+}
 
 .btn.small { padding: 8px 12px; font-size: 0.9rem; }
 
@@ -1093,6 +1314,13 @@ html {
 .service .icon { width: 44px; height: 44px; display: grid; place-items: center; color: var(--primary); background: rgba(110,231,255,0.08); border: 1px solid rgba(110,231,255,0.25); border-radius: 12px; }
 .service h3 { margin: 12px 0 8px; }
 .service p { margin: 0; color: var(--muted); }
+/* App Development card additions */
+.service .actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
 
 .project-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .project-card { background: var(--card); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; overflow: hidden; transform: translateY(0); transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease; opacity: 0; animation-fill-mode: forwards; }
@@ -1546,6 +1774,19 @@ html {
   transform: translateY(0); 
 }
 
+/* Disable animations/effects specifically for About section */
+#about .reveal,
+#about .reveal.visible,
+#about .card,
+#about .card::before {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+#about.in-view { animation: none !important; }
+
 /* Staggered animation for grid items */
 .skills-grid .reveal:nth-child(1) { transition-delay: 0.1s; }
 .skills-grid .reveal:nth-child(2) { transition-delay: 0.2s; }
@@ -1782,15 +2023,125 @@ html {
 .neo { filter: saturate(110%); }
 .tilt-mini { transform-style: preserve-3d; perspective: 600px; }
 
-/* QR Modal */
-.modal { display: none; position: fixed; inset: 0; z-index: 1200; }
-.modal.show { display: block; }
-.modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.55); -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px); }
-.modal-content { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); background: var(--card); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 16px; width: min(90vw, 380px); box-shadow: 0 20px 50px rgba(0,0,0,0.6); text-align: center; }
-.modal-title { margin: 6px 0 10px; }
-.qr-image { width: 100%; height: auto; border-radius: 10px; background: #fff; }
-.modal-note { color: var(--muted); margin: 8px 0 0; font-size: 0.9rem; }
-.modal-close { position: absolute; right: 10px; top: 8px; background: transparent; border: none; color: var(--text); font-size: 22px; cursor: pointer; }
+/* Typewriter Modal Styles */
+.typewriter-modal-content {
+  max-width: 800px;
+  width: 90%;
+  max-height: 80vh;
+  background: rgba(15, 23, 42, 0.95);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(110, 231, 255, 0.2);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+.typewriter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background: rgba(110, 231, 255, 0.1);
+  border-bottom: 1px solid rgba(110, 231, 255, 0.2);
+}
+
+.typewriter-title {
+  margin: 0;
+  color: var(--primary);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.typewriter-close {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.typewriter-close:hover {
+  background: rgba(110, 231, 255, 0.1);
+  color: var(--primary);
+}
+
+.typewriter-body {
+  padding: 30px;
+  max-height: calc(80vh - 80px);
+  overflow-y: auto;
+  position: relative;
+}
+
+.typewriter-text {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text);
+  font-family: 'Courier New', monospace;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  min-height: 300px;
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  color: var(--primary);
+  font-weight: bold;
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Typewriter modal animations */
+.typewriter-modal-content {
+  animation: typewriterSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes typewriterSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Mobile responsiveness for typewriter modal */
+@media (max-width: 768px) {
+  .typewriter-modal-content {
+    width: 95%;
+    max-height: 85vh;
+  }
+
+  .typewriter-header {
+    padding: 15px 20px;
+  }
+
+  .typewriter-title {
+    font-size: 20px;
+  }
+
+  .typewriter-body {
+    padding: 20px;
+    max-height: calc(85vh - 70px);
+  }
+
+  .typewriter-text {
+    font-size: 16px;
+    min-height: 250px;
+  }
+}
 
 /* Responsive design */
 @media (max-width: 1024px) {
@@ -1809,8 +2160,9 @@ html {
   .nav-toggle { display: inline-block; }
   .nav-links { 
     position: absolute; 
+    left: 4%;
     right: 4%; 
-    top: 64px; 
+    top: calc(100% + 8px); 
     background: var(--card); 
     border: 1px solid rgba(255,255,255,0.08); 
     border-radius: 12px; 
@@ -1821,8 +2173,10 @@ html {
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    z-index: 10;
   }
   .nav-links.show { display: flex; }
+  .nav-links a { display: block; text-align: center; padding: 12px; }
 }
 
 /* Enhanced Desktop and Tablet Responsive Design */
@@ -2118,11 +2472,6 @@ html {
     max-width: 700px;
     width: 95%;
   }
-  
-  /* Navigation adjustments */
-  .nav-links {
-    gap: 20px;
-  }
 }
 
 /* Ultra-wide screens (1920px and above) */
@@ -2204,61 +2553,48 @@ html {
   }
   
   .project-card:hover {
-    transform: translateY(-10px) scale(1.03);
+    transform: translateY(-8px) scale(1.03);
+  }
+  
+  .skill-card:hover,
+  .service-card:hover {
+    transform: translateY(-2px) scale(1.01);
   }
 }
-
+ 
 /* Enhanced animations for desktop */
 @media (min-width: 992px) {
   /* Smooth hover transitions */
   .nav-link {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
   .project-card {
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
-  .skill-card {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
+  .skill-card,
   .service-card {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
-  /* Enhanced glow effects */
   .nav-link:hover {
     box-shadow: 0 8px 25px rgba(110, 231, 255, 0.3);
   }
-  
   .project-card:hover {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
   }
-  
-  /* Resume button enhanced hover */
   .resume-btn:hover {
     transform: translateY(-5px) scale(1.15);
     box-shadow: 0 15px 35px rgba(110, 231, 255, 0.4);
   }
-  
-  /* Enhanced scroll indicators */
   .scroll-indicator.active {
     transform: scale(1.3);
     box-shadow: 0 0 20px rgba(110, 231, 255, 0.6);
   }
-  
-  /* Smooth scrolling enhancements */
   html {
     scroll-behavior: smooth;
   }
-  
-  /* Enhanced modal animations */
   .resume-modal-content {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
-  /* Desktop-specific performance optimizations */
   * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
