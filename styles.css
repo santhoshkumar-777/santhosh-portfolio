@@ -111,7 +111,6 @@ html, body {
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 4px 12px rgba(110, 231, 255, 0.15);
 }
-
 .nav-links a:active {
   transform: scale(0.95);
   transition: transform 0.1s ease;
@@ -1310,11 +1309,54 @@ html {
   }
 }
 
-.cards { display: grid; grid-template-columns: repeat(2, 1fr); }
-.service .icon { width: 44px; height: 44px; display: grid; place-items: center; color: var(--primary); background: rgba(110,231,255,0.08); border: 1px solid rgba(110,231,255,0.25); border-radius: 12px; }
-.service h3 { margin: 12px 0 8px; }
-.service p { margin: 0; color: var(--muted); }
-/* App Development card additions */
+/* Service card badges styling */
+.service .badges {
+  margin-top: 16px;
+  padding: 12px;
+  background: rgba(110, 231, 255, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(110, 231, 255, 0.15);
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+/* Enhanced colorful badges for different technologies */
+.service .badge:nth-child(1) { /* Flutter */
+  background: linear-gradient(135deg, #02569B, #0175C2);
+  border-color: #0175C2;
+  box-shadow: 0 2px 8px rgba(1, 117, 194, 0.3);
+  color: white;
+}
+
+.service .badge:nth-child(2) { /* React Native */
+  background: linear-gradient(135deg, #61DAFB, #21B7D4);
+  border-color: #21B7D4;
+  box-shadow: 0 2px 8px rgba(33, 183, 212, 0.3);
+  color: #003d5c;
+  font-weight: 600;
+}
+
+.service .badge:nth-child(4) { /* API */
+  background: linear-gradient(135deg, #FF6B35, #F7931E);
+  border-color: #F7931E;
+  box-shadow: 0 2px 8px rgba(247, 147, 30, 0.3);
+  color: white;
+}
+.service .badge:nth-child(3) { /* Firebase */
+  background: linear-gradient(135deg, #FFCA28, #FFA726);
+  border-color: #FFA726;
+  box-shadow: 0 2px 8px rgba(255, 167, 38, 0.3);
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.service .badge:nth-child(6) { /* AWS */
+  background: linear-gradient(135deg, #232F3E, #FF9900);
+  border-color: #FF9900;
+  box-shadow: 0 2px 8px rgba(255, 153, 0, 0.3);
+  color: white;
+}
+
 .service .actions {
   margin-top: 12px;
   display: flex;
