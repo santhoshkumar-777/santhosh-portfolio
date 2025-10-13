@@ -585,6 +585,74 @@
   // Initialize typewriter modal
   initTypewriterModal();
 
+  // Enhanced success/error display
+  function showFormMessage(message, type = 'success') {
+    // Remove existing message
+    const existingMsg = document.getElementById('form-message');
+    if (existingMsg) existingMsg.remove();
+
+    // Create new message element
+    const msgDiv = document.createElement('div');
+    msgDiv.id = 'form-message';
+    msgDiv.textContent = message;
+    msgDiv.style.cssText = `
+      margin-top: 15px;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: center;
+      ${type === 'success' ? 'background: #d4edda; color: #155724; border: 1px solid #c3e6cb;' : 'background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;'}
+    `;
+
+    // Insert after the form
+    const form = document.getElementById('contact-form');
+    if (form) form.appendChild(msgDiv);
+
+    // Auto-hide after 5 seconds
+    setTimeout(() => { if (msgDiv) msgDiv.remove(); }, 5000);
+  }
+
+  // Handle contact form submission
+  document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        console.log('Form submission triggered');
+        e.preventDefault(); // Prevent default form submission
+        console.log('Default prevented, processing form...');
+
+        // Collect form data
+        const formData = new FormData(contactForm);
+        const firstName = formData.get('firstName');
+        const lastName = formData.get('lastName');
+        const email = formData.get('email');
+        const message = formData.get('message');
+        const fullName = `${firstName} ${lastName}`.trim();
+
+        // For EmailJS: Send email
+        emailjs.send('service_uua601c', 'template_o8mcvqd', { // Replace with your EmailJS Service ID and Template ID
+          from_name: fullName,
+          from_email: email,
+          message: message,
+          to_email: 'your-email@example.com' // Optional: Set recipient in EmailJS template
+        }).then(function(response) {
+          console.log('Email sent successfully:', response);
+          showFormMessage('Your message has been sent successfully! Thank you.', 'success');
+          contactForm.reset(); // Clear the form
+        }).catch(function(error) {
+          console.error('Error sending email:', error);
+          showFormMessage('Oops! Something went wrong. Please try again.', 'error');
+        });
+
+        // For Formspree: If you're using it instead, the form submits naturally via action URL.
+        // No extra JS needed, but you can add success/error handling if desired.
+      });
+    } else {
+      console.error('Contact form not found! Check if the form has id="contact-form"');
+    }
+  });
+
   // Footer year
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
