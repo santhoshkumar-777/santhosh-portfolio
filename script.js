@@ -1,8 +1,9 @@
-(function () {
-  'use strict';
 
-  // Enhanced smooth scrolling for navigation links
-  function initSmoothScrolling() {
+// EmailJS initialization
+emailjs.init("-1uPa_khPTiy85g8F");
+
+// IIFE wrapper start
+(function(){
     const navLinks = document.querySelectorAll('a[href^="#"]');
     // Only nav icons that are hash links
     const navIcons = document.querySelectorAll('.nav-icon[href^="#"]');
@@ -81,9 +82,9 @@
       if (activeNavIcon) activeNavIcon.classList.add('active');
     }
   }
+);
 
-  // Initialize smooth scrolling
-  initSmoothScrolling();
+  // Initialize smooth scrolling - function removed as functionality is handled elsewhere
 
   // Advanced particle system for hero section
   function initParticleSystem() {
@@ -613,47 +614,30 @@
     setTimeout(() => { if (msgDiv) msgDiv.remove(); }, 5000);
   }
 
-  // Handle contact form submission
-  document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-      contactForm.addEventListener('submit', function(e) {
-        console.log('Form submission triggered');
-        e.preventDefault(); // Prevent default form submission
-        console.log('Default prevented, processing form...');
 
-        // Collect form data
-        const formData = new FormData(contactForm);
-        const firstName = formData.get('firstName');
-        const lastName = formData.get('lastName');
-        const email = formData.get('email');
-        const message = formData.get('message');
-        const fullName = `${firstName} ${lastName}`.trim();
+function sendemail(){
+    var email = document.getElementById("email").value;
+    var firstName = document.getElementById("firstName").value;
+    var lastName = document.getElementById("lastName").value;
+    var from_name = firstName + ' ' + lastName;
+    var message = document.getElementById("message").value;
 
-        // For EmailJS: Send email
-        emailjs.send('service_uua601c', 'template_o8mcvqd', { // Replace with your EmailJS Service ID and Template ID
-          from_name: fullName,
-          from_email: email,
-          message: message,
-          to_email: 'your-email@example.com' // Optional: Set recipient in EmailJS template
-        }).then(function(response) {
-          console.log('Email sent successfully:', response);
-          showFormMessage('Your message has been sent successfully! Thank you.', 'success');
-          contactForm.reset(); // Clear the form
-        }).catch(function(error) {
-          console.error('Error sending email:', error);
-          showFormMessage('Oops! Something went wrong. Please try again.', 'error');
+    var templateParams = {
+        email: email,
+        from_name: from_name,
+        message: message
+    };
+
+    emailjs.send('service_uua601c','template_kmwoyta', templateParams)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            showFormMessage("Sent successfully!", 'success');
+        }, function(error) {
+            console.log('FAILED...', error);
+            showFormMessage("Failed to send. Please try again.", 'error');
         });
-
-        // For Formspree: If you're using it instead, the form submits naturally via action URL.
-        // No extra JS needed, but you can add success/error handling if desired.
-      });
-    } else {
-      console.error('Contact form not found! Check if the form has id="contact-form"');
-    }
-  });
+}
 
   // Footer year
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
-})();
