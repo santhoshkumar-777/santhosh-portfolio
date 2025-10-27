@@ -1,6 +1,6 @@
 
 // EmailJS initialization
-emailjs.init("Oh607FW11K0ukZKuA");
+emailjs.init("-1uPa_khPTiy85g8F");
 
 // IIFE wrapper start
 (function(){
@@ -145,31 +145,25 @@ emailjs.init("Oh607FW11K0ukZKuA");
   // Initialize particle system
   initParticleSystem();
 
-  // Enhanced 3D tilt effect for cards
-  function init3DTilt() {
+  // Simple hover effect for cards
+  function initSimpleHover() {
     const cards = document.querySelectorAll('.card, .project-card');
     
     cards.forEach(card => {
-      card.addEventListener('mousemove', function(e) {
-        const rect = this.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const rotateX = (y - centerY) / 10;
-        const rotateY = (centerX - x) / 10;
-        
-        this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-5px)';
+        this.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1)';
       });
       
       card.addEventListener('mouseleave', function() {
-        this.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+        this.style.transform = 'translateY(0)';
+        this.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.25)';
       });
     });
   }
 
-  // Initialize 3D tilt
-  init3DTilt();
+  // Initialize simple hover
+  initSimpleHover();
 
   // Enhanced typing effect with more dynamic behavior
   function initEnhancedTyping() {
@@ -434,17 +428,15 @@ emailjs.init("Oh607FW11K0ukZKuA");
     });
   }
 
-  // Mini tilt for social buttons
+  // Simple hover effect for social buttons
   document.querySelectorAll('.tilt-mini').forEach(function (btn) {
-    btn.addEventListener('mousemove', function (e) {
-      var r = btn.getBoundingClientRect();
-      var x = e.clientX - r.left; var y = e.clientY - r.top;
-      var rotY = ((x / r.width) - 0.5) * 12;
-      var rotX = -((y / r.height) - 0.5) * 12;
-      btn.style.transform = 'perspective(600px) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg)';
+    btn.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-3px) scale(1.05)';
+      this.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.3)';
     });
-    btn.addEventListener('mouseleave', function () {
-      btn.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg)';
+    btn.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0) scale(1)';
+      this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.2)';
     });
   });
 
@@ -493,19 +485,16 @@ emailjs.init("Oh607FW11K0ukZKuA");
     setTimeout(function () { t.remove(); }, 3500);
   }
 
-  // 3D tilt on contact card
-  var tilt = document.getElementById('contact-card');
-  if (tilt) {
-    tilt.addEventListener('mousemove', function (e) {
-      var rect = tilt.getBoundingClientRect();
-      var x = e.clientX - rect.left;
-      var y = e.clientY - rect.top;
-      var rotateY = ((x / rect.width) - 0.5) * 10; // -5 to 5
-      var rotateX = -((y / rect.height) - 0.5) * 10; // -5 to 5
-      tilt.style.transform = 'perspective(800px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)';
+  // Simple hover on contact card
+  var contactCard = document.getElementById('contact-card');
+  if (contactCard) {
+    contactCard.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-5px)';
+      this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.3)';
     });
-    tilt.addEventListener('mouseleave', function () {
-      tilt.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg)';
+    contactCard.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0)';
+      this.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
     });
   }
 
@@ -628,7 +617,7 @@ function sendemail(){
         message: message
     };
 
-    emailjs.send('service_fim7h74','template_gr8hnl8', templateParams)
+    emailjs.send('service_uua601c','template_kmwoyta', templateParams)
         .then(function(response) {
             console.log('SUCCESS!', response.status, response.text);
             showFormMessage("Sent successfully!", 'success');
