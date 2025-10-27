@@ -709,7 +709,7 @@ html {
   align-items: center;
 }
 
-.avatar-tilt { display: inline-block; border-radius: 50%; padding: 10px; background: radial-gradient(120px 120px at 50% 40%, rgba(167,139,250,0.18), rgba(110,231,255,0.18)); box-shadow: 0 20px 40px rgba(0,0,0,0.45); transition: transform 220ms ease, box-shadow 220ms ease; }
+.avatar-container { display: inline-block; border-radius: 50%; padding: 10px; background: radial-gradient(120px 120px at 50% 40%, rgba(167,139,250,0.18), rgba(110,231,255,0.18)); box-shadow: 0 20px 40px rgba(0,0,0,0.45); transition: transform 220ms ease, box-shadow 220ms ease; }
 .avatar {
   width: 220px;
   height: 220px;
@@ -724,7 +724,7 @@ html {
   transition: filter 220ms ease;
 }
 .avatar-tilt:hover { box-shadow: 0 26px 64px rgba(0,0,0,0.55); }
-.avatar-tilt:hover .avatar { filter: saturate(115%) contrast(105%); }
+.avatar-container:hover .avatar { filter: saturate(115%) contrast(105%); }
 
 /* removed rotating ring and badge */
 
@@ -1442,8 +1442,8 @@ html {
 .btn.large { padding: 12px 18px; font-weight: 700; }
 .form-note { color: var(--muted); font-size: 0.85rem; margin-top: 8px; text-align: center; }
 
-/* 3D tilt */
-.tilt { transform-style: preserve-3d; perspective: 800px; }
+/* Simple hover */
+.tilt { transition: all 0.3s ease; }
 .tilt:hover { will-change: transform; }
 
 /* Enhanced form field effects */
@@ -1543,9 +1543,9 @@ html {
   100% { background-position: 0% 50%; }
 }
 
-@keyframes rotate3D {
-  from { transform: rotateY(0deg); }
-  to { transform: rotateY(360deg); }
+@keyframes simpleRotate {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
 }
 
 /* Enhanced brand with animated gradient */
@@ -1616,7 +1616,7 @@ html {
   animation-delay: 3s;
 }
 
-/* Enhanced avatar with 3D effects */
+/* Enhanced avatar with simple effects */
 .avatar-tilt { 
   display: inline-block; 
   border-radius: 50%; 
@@ -1641,9 +1641,9 @@ html {
   transition: filter 220ms ease, transform 0.3s ease;
 }
 
-.avatar-tilt:hover { 
+.avatar-container:hover { 
   box-shadow: 0 26px 64px rgba(0,0,0,0.55); 
-  transform: scale(1.05) rotateY(5deg);
+  transform: scale(1.05);
 }
 
 .avatar-tilt:hover .avatar { 
@@ -2073,7 +2073,7 @@ html {
 
 .neo-btn svg { color: #111827; }
 .neo { filter: saturate(110%); }
-.tilt-mini { transform-style: preserve-3d; perspective: 600px; }
+.tilt-mini { transition: all 0.3s ease; }
 
 /* Typewriter Modal Styles */
 .typewriter-modal-content {
