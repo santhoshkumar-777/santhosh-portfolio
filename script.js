@@ -1,6 +1,6 @@
 
 // EmailJS initialization
-emailjs.init("-1uPa_khPTiy85g8F");
+emailjs.init("Oh607FW11K0ukZKuA");
 
 // IIFE wrapper start
 (function(){
@@ -617,7 +617,7 @@ function sendemail(){
         message: message
     };
 
-    emailjs.send('service_uua601c','template_kmwoyta', templateParams)
+    emailjs.send('service_fim7h74','template_kmwoyta', templateParams)
         .then(function(response) {
             console.log('SUCCESS!', response.status, response.text);
             showFormMessage("Sent successfully!", 'success');
