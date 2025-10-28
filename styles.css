@@ -1895,6 +1895,11 @@ to { transform: rotate(360deg); }
   background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
 }
 
+/* RAG Chatbot thumbnail */
+.project-thumb-rag {
+  background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
+}
+
 .project-icon {
   display: flex;
   align-items: center;
