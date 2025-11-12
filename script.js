@@ -82,7 +82,7 @@ emailjs.init("Oh607FW11K0ukZKuA");
       if (activeNavIcon) activeNavIcon.classList.add('active');
     }
   }
-);
+)();
 
   // Initialize smooth scrolling - function removed as functionality is handled elsewhere
 
