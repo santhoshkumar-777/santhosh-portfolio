@@ -170,7 +170,6 @@ emailjs.init("Oh607FW11K0ukZKuA");
     const words = [
       'AI Enthusiast',
       'Web Developer',
-      'Full Stack Developer',
       'Chatbot Creator',
       'Freelancer',
       'Problem Solver',
@@ -189,19 +188,19 @@ emailjs.init("Oh607FW11K0ukZKuA");
     let pauseTime = 1200;
 
     function type() {
-      const current = words[wordIndex];
+      const full = words[wordIndex];
       
       if (!deleting) {
-        typedEl.textContent = current.slice(0, charIndex + 1);
+        typedEl.textContent = full.slice(0, charIndex + 1);
         charIndex++;
         
-        if (charIndex === current.length) {
+        if (charIndex === full.length) {
           deleting = true;
           setTimeout(type, pauseTime);
           return;
         }
       } else {
-        typedEl.textContent = current.slice(0, charIndex - 1);
+        typedEl.textContent = full.slice(0, Math.max(0, charIndex - 1));
         charIndex--;
         
         if (charIndex === 0) {
@@ -439,6 +438,14 @@ emailjs.init("Oh607FW11K0ukZKuA");
       this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.2)';
     });
   });
+
+  // Floating Contact button click -> navigate to Contact page
+  var contactFab = document.getElementById('contactBtn');
+  if (contactFab) {
+    contactFab.addEventListener('click', function () {
+      window.location.href = 'contact.html';
+    });
+  }
 
   // logo feature removed
 
