@@ -12,6 +12,11 @@
 
   <header class="site-header">
     <nav class="nav container">
+      <a href="index.html#home" class="back-btn" aria-label="Back to Home" title="Back to Home">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="back-icon">
+          <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
       <a href="index.html#home" class="brand">Santhosh Kumar</a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span>
@@ -93,6 +98,13 @@
       </div>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Santhosh Kumar — All rights reserved</p>
+      <a class="to-top" href="index.html#home" aria-label="Back to top">↑</a>
+    </div>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script src="script.js" defer></script>
