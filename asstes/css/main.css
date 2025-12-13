@@ -1117,6 +1117,135 @@ html {
   font-size: 0.9rem;
 }
 
+/* Round Skills Button - Unique Design */
+.round-skills-btn {
+  position: absolute;
+  top: 0;
+  left: -70px;
+  /* Moved to Left */
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  /* Reduced size for neatness */
+  height: 64px;
+  border-radius: 50%;
+  /* Perfect circle */
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(12px);
+  /* Smoother blur */
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--muted);
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  overflow: visible;
+  /* Needed for outer glow */
+}
+
+/* Rotating refined border */
+.round-skills-btn::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  padding: 2px;
+  background: conic-gradient(from 0deg, transparent 0%, var(--primary) 20%, var(--accent) 50%, transparent 80%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: spinBorder 4s linear infinite;
+  opacity: 0.8;
+}
+
+/* Inner glow ring */
+.round-skills-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: inset 0 0 20px rgba(110, 231, 255, 0.05);
+  pointer-events: none;
+}
+
+@keyframes spinBorder {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.round-skills-btn .icon-svg {
+  width: 22px;
+  /* Small neat icon */
+  height: 22px;
+  margin-bottom: 2px;
+  stroke: var(--text);
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 5px rgba(110, 231, 255, 0.3));
+}
+
+.round-skills-btn .icon-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--text);
+  opacity: 0.9;
+}
+
+.round-skills-btn:hover {
+  transform: scale(1.1) rotate(5deg);
+  background: rgba(15, 23, 42, 0.8);
+  box-shadow: 0 0 30px rgba(110, 231, 255, 0.25);
+  color: white;
+}
+
+.round-skills-btn:hover .icon-svg {
+  stroke: var(--primary);
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 12px var(--primary));
+}
+
+.round-skills-btn:hover::before {
+  animation-duration: 2s;
+  /* Speed up spine on hover */
+  opacity: 1;
+}
+
+/* Ensure avatar-tilt matches positioning context */
+.avatar-tilt {
+  position: relative;
+  display: inline-block;
+}
+
+@media (max-width: 600px) {
+  .round-skills-btn {
+    width: 48px;
+    height: 48px;
+    left: -12px;
+    top: -12px;
+    /* Tighter fit */
+  }
+
+  .round-skills-btn .icon-svg {
+    width: 18px;
+    height: 18px;
+    margin-bottom: 0;
+  }
+
+  .round-skills-btn .icon-label {
+    font-size: 0.6rem;
+    display: none;
+    /* Hide label on small screens for cleaner look */
+  }
+}
+
 .section-title {
   font-size: 1.6rem;
   margin: 0 0 20px;
@@ -2078,8 +2207,8 @@ html {
   background: linear-gradient(45deg, var(--primary), var(--accent), var(--primary-strong), var(--accent));
   background-size: 300% 300%;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
   animation: gradientShift 3s ease infinite, float 3s ease-in-out infinite;
   position: relative;
 }
@@ -2296,8 +2425,8 @@ html {
   margin: 0 0 20px;
   background: linear-gradient(45deg, var(--primary), var(--accent));
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
   animation: fadeInUp 0.6s ease;
 }
 
@@ -2366,6 +2495,7 @@ html {
   margin: 0 0 24px 0;
   background: linear-gradient(to right, #fff, #94a3b8);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
