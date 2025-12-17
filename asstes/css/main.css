@@ -1118,131 +1118,183 @@ html {
 }
 
 /* Round Skills Button - Unique Design */
-.round-skills-btn {
-  position: absolute;
-  top: 0;
-  left: -70px;
-  /* Moved to Left */
-  z-index: 20;
+/* Round Skills Button - Modern Orbit Design */
+/* Modern Skills Pill - Unique Floating Design */
+/* Modern Skills Dock - Container Box */
+/* Modern Skills Dock - Container Box */
+.skills-dock-container {
+  /* Desktop/Laptop Default: Relative Flow */
+  position: relative;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 64px;
-  /* Reduced size for neatness */
-  height: 64px;
-  border-radius: 50%;
-  /* Perfect circle */
-  background: rgba(15, 23, 42, 0.5);
+  /* Center align items in the dock */
+  gap: 10px;
+  padding: 14px 24px;
+  background: rgba(10, 15, 25, 0.6);
   backdrop-filter: blur(12px);
-  /* Smoother blur */
   -webkit-backdrop-filter: blur(12px);
-  color: var(--muted);
-  text-decoration: none;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  overflow: visible;
-  /* Needed for outer glow */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.3),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* No float animation on desktop to keep it steady with text */
 }
 
-/* Rotating refined border */
-.round-skills-btn::before {
+.skills-dock-container:hover {
+  transform: translateY(-5px);
+  background: rgba(15, 23, 42, 0.8);
+  border-color: rgba(110, 231, 255, 0.2);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.4),
+    inset 0 0 20px rgba(110, 231, 255, 0.05);
+}
+
+.dock-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--muted);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.skills-dock-container:hover .dock-label {
+  color: var(--primary);
+  text-shadow: 0 0 10px rgba(110, 231, 255, 0.4);
+}
+
+/* Modern Skills Pill - Button Inside Dock */
+.modern-skills-pill {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, rgba(110, 231, 255, 0.1), rgba(167, 139, 250, 0.1));
+  border: 1px solid rgba(110, 231, 255, 0.2);
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+}
+
+/* Mobile Responsiveness for Dock (Below 768px - Tablet/Phone) */
+@media (max-width: 900px) {
+  .skills-dock-container {
+    position: relative;
+    /* Changed from fixed to relative for better flow */
+    bottom: auto;
+    left: auto;
+    transform: none;
+    width: 90%;
+    max-width: 350px;
+    /* Limit width for better look */
+    margin-top: 25px;
+    /* Gap requested */
+    z-index: 10;
+    background: rgba(10, 15, 25, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    animation: none;
+    /* remove float animation on mobile to prevent jitter */
+  }
+
+  .skills-dock-container:hover {
+    transform: translateY(-5px);
+  }
+}
+
+/* Glowing Border Animation */
+.modern-skills-pill::before {
   content: '';
   position: absolute;
   inset: -2px;
-  border-radius: 50%;
+  border-radius: 50px;
   padding: 2px;
-  background: conic-gradient(from 0deg, transparent 0%, var(--primary) 20%, var(--accent) 50%, transparent 80%);
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  animation: spinBorder 4s linear infinite;
-  opacity: 0.8;
+  opacity: 0.5;
+  animation: borderRotate 4s linear infinite;
 }
 
-/* Inner glow ring */
-.round-skills-btn::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  box-shadow: inset 0 0 20px rgba(110, 231, 255, 0.05);
-  pointer-events: none;
+.modern-skills-pill:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, rgba(110, 231, 255, 0.2), rgba(167, 139, 250, 0.2));
+  border-color: var(--primary);
+  box-shadow: 0 0 20px rgba(110, 231, 255, 0.2);
 }
 
-@keyframes spinBorder {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+.pill-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: var(--primary);
+  filter: drop-shadow(0 0 5px rgba(110, 231, 255, 0.4));
+  transition: transform 0.5s ease;
 }
 
-.round-skills-btn .icon-svg {
-  width: 22px;
-  /* Small neat icon */
-  height: 22px;
-  margin-bottom: 2px;
-  stroke: var(--text);
-  transition: all 0.3s ease;
-  filter: drop-shadow(0 0 5px rgba(110, 231, 255, 0.3));
+.modern-skills-pill:hover .pill-icon {
+  transform: rotate(180deg) scale(1.1);
+  color: #fff;
 }
 
-.round-skills-btn .icon-label {
-  font-size: 0.75rem;
+.pill-text {
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
   font-weight: 600;
+  font-size: 0.9rem;
   letter-spacing: 0.5px;
-  color: var(--text);
-  opacity: 0.9;
+  text-transform: uppercase;
 }
 
-.round-skills-btn:hover {
-  transform: scale(1.1) rotate(5deg);
-  background: rgba(15, 23, 42, 0.8);
-  box-shadow: 0 0 30px rgba(110, 231, 255, 0.25);
-  color: white;
+@keyframes floatDock {
+
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-8px);
+  }
 }
 
-.round-skills-btn:hover .icon-svg {
-  stroke: var(--primary);
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 12px var(--primary));
+@keyframes borderRotate {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
-.round-skills-btn:hover::before {
-  animation-duration: 2s;
-  /* Speed up spine on hover */
-  opacity: 1;
-}
-
-/* Ensure avatar-tilt matches positioning context */
-.avatar-tilt {
-  position: relative;
-  display: inline-block;
-}
-
+/* Mobile Responsiveness for Dock */
 @media (max-width: 600px) {
-  .round-skills-btn {
-    width: 48px;
-    height: 48px;
-    left: -12px;
-    top: -12px;
-    /* Tighter fit */
+  .skills-dock-container {
+    bottom: 20px;
+    width: 90%;
+    max-width: 300px;
+    padding: 12px 20px;
   }
 
-  .round-skills-btn .icon-svg {
-    width: 18px;
-    height: 18px;
-    margin-bottom: 0;
+  .dock-label {
+    font-size: 0.65rem;
   }
 
-  .round-skills-btn .icon-label {
-    font-size: 0.6rem;
-    display: none;
-    /* Hide label on small screens for cleaner look */
+  .modern-skills-pill {
+    width: 100%;
+    justify-content: center;
   }
 }
 
