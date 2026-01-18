@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Details | SANTHOSH KUMAR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="project-details-page">
+    <div class="scroll-progress"></div>
+
+    <header class="site-header">
+        <nav class="nav container">
+            <div class="nav-left">
+                <a href="index.html#projects" class="back-btn" aria-label="Go back">
+                    <svg class="back-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </a>
+                <a href="index.html" class="brand">SANTHOSH KUMAR</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="project-hero section-pad">
+            <div class="container">
+                <div id="project-header" class="reveal">
+                    <div class="project-type-badge" id="project-category">Category</div>
+                    <h1 id="project-title" class="headline">Project Title</h1>
+                    <p id="project-tagline" class="tagline">Short description goes here...</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-info section-pad">
+            <div class="container">
+                <div class="project-info-grid">
+                    <div class="project-main-content reveal">
+                        <div class="info-card">
+                            <h3>Overview</h3>
+                            <p id="project-description">Detailed project description will be loaded here.</p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>Key Features</h3>
+                            <ul id="project-features" class="feature-list">
+                                <!-- Features will be loaded dynamically -->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <aside class="project-sidebar reveal">
+                        <div class="info-card">
+                            <h3>Tech Stack</h3>
+                            <div id="project-stack" class="tech-badges">
+                                <!-- Tech stack will be loaded dynamically -->
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>Links</h3>
+                            <div class="project-links">
+                                <a href="#" id="live-link" class="btn primary full-width" target="_blank">View Live
+                                    Demo</a>
+                                <a href="#" id="github-link" class="btn ghost full-width" target="_blank">View Source
+                                    Code</a>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+        <section class="more-projects section-pad">
+            <div class="container">
+                <h2 class="section-title">More Projects</h2>
+                <div id="more-projects-grid" class="project-grid">
+                    <!-- More projects will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-copy">
+            <p>Copyright © <span id="year"></span> Santhosh Kumar – All rights reserved</p>
+        </div>
+    </footer>
+
+    <script src="project-details-data.js"></script>
+    <script src="project-details.js"></script>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>

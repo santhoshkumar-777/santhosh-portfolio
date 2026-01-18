@@ -725,3 +725,23 @@ function initProjectFilter() {
 
 // Initialize Project Filter
 initProjectFilter();
+
+// Project Card Click Interaction
+function initProjectCardClick() {
+  const projectCards = document.querySelectorAll('.project-card');
+
+  projectCards.forEach(card => {
+    card.addEventListener('click', function (e) {
+      // If the user clicked a link inside the card, don't trigger the card click
+      if (e.target.closest('a')) return;
+
+      const detailsLink = this.querySelector('a[href*="project-details.html"]');
+      if (detailsLink) {
+        window.location.href = detailsLink.getAttribute('href');
+      }
+    });
+  });
+}
+
+// Initialize Project Card Click
+initProjectCardClick();
