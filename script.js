@@ -14,8 +14,14 @@ emailjs.init("Oh607FW11K0ukZKuA");
   allNavElements.forEach(element => {
     element.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
-      // Only intercept hash links
-      if (!targetId || !targetId.startsWith('#')) return;
+
+      // Check if it's an external page or hash link
+      const isExternalPage = targetId && (targetId.endsWith('.html') || targetId.includes('.html#'));
+      const isHashLink = targetId && targetId.startsWith('#') && !isExternalPage;
+
+      // Only intercept pure hash links (not external pages)
+      if (!isHashLink) return;
+
       e.preventDefault();
       const targetSection = document.querySelector(targetId);
 
@@ -27,7 +33,7 @@ emailjs.init("Oh607FW11K0ukZKuA");
         // Add creative scroll effect with easing
         const startPosition = window.pageYOffset;
         const distance = targetPosition - startPosition;
-        const duration = 1200; // 1.2 seconds for smooth animation
+        const duration = 800; // Reduced to 0.8 seconds for faster navigation
         let start = null;
 
         function animation(currentTime) {

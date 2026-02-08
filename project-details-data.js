@@ -11,6 +11,8 @@ const projectsData = {
             "Interactive dashboard for story mapping"
         ],
         "stack": ["Python", "OpenAI API", "LangChain", "Streamlit"],
+        "isNew": true,
+        "highlights": ["GPT-4 Integration", "Advanced NLP Models"],
         "liveLink": "#",
         "githubLink": "#"
     },
@@ -26,6 +28,8 @@ const projectsData = {
             "Personalized financial goal tracking"
         ],
         "stack": ["Python", "TensorFlow", "Pandas", "Scikit-learn"],
+        "isNew": false,
+        "highlights": ["LSTM Neural Networks", "Real-time Predictions"],
         "liveLink": "#",
         "githubLink": "#"
     },
@@ -86,6 +90,8 @@ const projectsData = {
             "Local LLM support for privacy"
         ],
         "stack": ["Python", "ChromaDB", "LlamaIndex", "OpenAI"],
+        "isNew": true,
+        "highlights": ["LlamaIndex v0.9", "ChromaDB Vector Store", "Multi-Modal Support"],
         "liveLink": "#",
         "githubLink": "#"
     },

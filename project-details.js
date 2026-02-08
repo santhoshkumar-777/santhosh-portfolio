@@ -70,6 +70,26 @@ function populateProjectDetails(project) {
     document.getElementById('project-category').textContent = project.category;
     document.getElementById('project-tagline').textContent = project.tagline;
 
+    // Add "NEW" badge if project is new
+    const headerDiv = document.getElementById('project-header');
+    if (project.isNew) {
+        const newBadge = document.createElement('span');
+        newBadge.className = 'new-project-badge';
+        newBadge.textContent = 'NEW';
+        newBadge.style.cssText = `
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #000;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 15px rgba(110, 231, 255, 0.4);
+        `;
+        headerDiv.insertBefore(newBadge, headerDiv.firstChild);
+    }
+
     // Main Content
     document.getElementById('project-description').textContent = project.description;
 
@@ -81,6 +101,22 @@ function populateProjectDetails(project) {
         li.textContent = feature;
         featuresList.appendChild(li);
     });
+
+    // Add Highlights section if available
+    if (project.highlights && project.highlights.length > 0) {
+        const highlightsCard = document.createElement('div');
+        highlightsCard.className = 'info-card highlights-card';
+        highlightsCard.innerHTML = `
+            <h3>🌟 New Configurations & Models</h3>
+            <div class="highlights-list">
+                ${project.highlights.map(h => `
+                    <span class="highlight-badge">${h}</span>
+                `).join('')}
+            </div>
+        `;
+        const mainContent = document.querySelector('.project-main-content');
+        mainContent.appendChild(highlightsCard);
+    }
 
     // Tech Stack Badges
     const stackContainer = document.getElementById('project-stack');
