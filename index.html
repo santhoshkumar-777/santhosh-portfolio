@@ -34,7 +34,7 @@
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span>
         <span></span>
-        <span></span,>
+        <span></span>
       </button>
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
@@ -521,10 +521,32 @@
     </div>
     <div class="container footer-copy">
       <p>Copyright © <span id="year"></span> <a href="#home" class="copy-link">Santhosh Kumar</a> – All rights reserved
+        &nbsp;|&nbsp; <a href="terms.html" class="copy-link">Terms &amp; Conditions</a>
       </p>
     </div>
   </footer>
 
+
+  <!-- Typewriter / About Modal -->
+  <div id="typewriterModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true"
+    aria-labelledby="twModalTitle">
+    <div class="modal-backdrop"></div>
+    <div class="resume-modal-content" style="max-width:620px;">
+      <div class="resume-header">
+        <h3 class="modal-title" id="twModalTitle">About Me</h3>
+        <button class="typewriter-close" aria-label="Close modal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="resume-body" style="padding:24px;">
+        <p id="typewriterText" style="font-size:1rem;line-height:1.8;color:var(--text);white-space:pre-wrap;"></p>
+        <span id="typewriterCursor"
+          style="display:inline-block;width:2px;height:1.1em;background:var(--primary);margin-left:2px;vertical-align:middle;animation:blink 0.7s step-end infinite;">&#8203;</span>
+      </div>
+    </div>
+  </div>
 
   <!-- Resume Modal -->
   <div id="resumeModal" class="modal" aria-hidden="true">

@@ -1,6 +1,8 @@
 
-// EmailJS initialization
-emailjs.init("Oh607FW11K0ukZKuA");
+// EmailJS initialization - only initialise when library is loaded
+if (typeof emailjs !== 'undefined') {
+  emailjs.init("Oh607FW11K0ukZKuA");
+}
 
 // IIFE wrapper start
 (function () {
@@ -455,7 +457,7 @@ if (contactFab) {
 
 // logo feature removed
 
-// Contact form: validate, send, clear, toast
+// Contact form: validate, send via EmailJS, clear, toast
 var form = document.getElementById('contact-form');
 if (form) {
   form.addEventListener('submit', function (e) {
@@ -475,18 +477,8 @@ if (form) {
     if (!message.value.trim()) { document.getElementById('err-message').textContent = 'Please enter a message.'; hasError = true; }
     if (hasError) return;
 
-    var subject = encodeURIComponent('New message from ' + firstName.value + ' ' + lastName.value);
-    var body = encodeURIComponent(
-      'Name: ' + firstName.value + ' ' + lastName.value + '\n' +
-      'Email: ' + email.value + '\n\n' +
-      message.value
-    );
-    var mailto = 'mailto:santhoshkumar143143@gmail.com?subject=' + subject + '&body=' + body;
-    window.location.href = mailto;
-
-    // Clear fields and show toast
-    [firstName, lastName, email, message].forEach(function (el) { el.value = ''; });
-    showToast('Thanks! Your message is ready to send via your email app.');
+    // Send via EmailJS (primary)
+    sendemail();
   });
 }
 
@@ -519,33 +511,45 @@ function initTypewriterModal() {
   const typewriterCursor = document.getElementById('typewriterCursor');
   const closeBtn = document.querySelector('.typewriter-close');
 
-  if (!aboutSection || !typewriterModal) return;
+  if (!aboutSection || !typewriterModal || !typewriterText) return;
 
-  const aboutContent = "💡 I'm an AI Developer & Junior Web Developer, driven by a passion for building intelligent solutions and seamless digital experiences.🧠 My curiosity for AI programming pushes me to explore machine learning and automation, turning complex problems into smart, practical solutions.📱 On the web side, I focus on creating modern, responsive, and user-friendly applications that blend performance with design.✨ With a mindset of continuous learning, I aim to combine creativity and technology to craft impactful projects that truly make a difference.";
+  const aboutContent = "💡 I'm an AI Developer & Junior Web Developer, driven by a passion for building intelligent solutions and seamless digital experiences.\n\n🧠 My curiosity for AI programming pushes me to explore machine learning and automation, turning complex problems into smart, practical solutions.\n\n📱 On the web side, I focus on creating modern, responsive, and user-friendly applications that blend performance with design.\n\n✨ With a mindset of continuous learning, I aim to combine creativity and technology to craft impactful projects that truly make a difference.";
 
   let isTyping = false;
 
-  // Open modal on about section click
-  aboutSection.addEventListener('click', function () {
-    openTypewriterModal();
-  });
+  // Create and add a dedicated "Read More" button inside the About section bio box
+  const bioBox = aboutSection.querySelector('.bio-box');
+  if (bioBox && !bioBox.querySelector('.about-readmore-btn')) {
+    const readMoreBtn = document.createElement('button');
+    readMoreBtn.className = 'btn ghost about-readmore-btn';
+    readMoreBtn.style.cssText = 'margin-top:14px;font-size:0.85rem;padding:8px 16px;';
+    readMoreBtn.textContent = '✦ Read More About Me';
+    readMoreBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      openTypewriterModal();
+    });
+    bioBox.appendChild(readMoreBtn);
+  }
 
   // Close modal functionality
-  closeBtn.addEventListener('click', closeTypewriterModal);
-  typewriterModal.querySelector('.modal-backdrop').addEventListener('click', closeTypewriterModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeTypewriterModal);
+  const backdrop = typewriterModal.querySelector('.modal-backdrop');
+  if (backdrop) backdrop.addEventListener('click', closeTypewriterModal);
 
   function openTypewriterModal() {
     typewriterModal.classList.add('show');
+    typewriterModal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
     startTypewriter();
   }
 
   function closeTypewriterModal() {
     typewriterModal.classList.remove('show');
+    typewriterModal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     isTyping = false;
     typewriterText.textContent = '';
-    typewriterCursor.style.opacity = '1';
+    if (typewriterCursor) typewriterCursor.style.opacity = '1';
   }
 
   function startTypewriter() {
@@ -553,7 +557,7 @@ function initTypewriterModal() {
 
     isTyping = true;
     typewriterText.textContent = '';
-    typewriterCursor.style.opacity = '1';
+    if (typewriterCursor) typewriterCursor.style.opacity = '1';
 
     let charIndex = 0;
 
@@ -563,14 +567,9 @@ function initTypewriterModal() {
       if (charIndex < aboutContent.length) {
         typewriterText.textContent += aboutContent.charAt(charIndex);
         charIndex++;
-
-        // Add slight delay for better effect
-        setTimeout(typeChar, 50);
+        setTimeout(typeChar, 30);
       } else {
-        // Hide cursor when done
-        setTimeout(() => {
-          typewriterCursor.style.opacity = '0';
-        }, 500);
+        if (typewriterCursor) setTimeout(() => { typewriterCursor.style.opacity = '0'; }, 500);
       }
     }
 

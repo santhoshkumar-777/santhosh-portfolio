@@ -6,12 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SKILLS — Santhosh Kumar</title>
   <meta name="description"
-    content="Skills of Santhosh Kumar - Full Stack, AI Tools & Automation, Design & Performance." />
+    content="Skills of Santhosh Kumar - Full Stack, AI Tools &amp; Automation, Design &amp; Performance." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
+  <div class="scroll-progress"></div>
+
   <header class="site-header">
     <nav class="nav container">
       <a href="index.html#home" class="back-btn" aria-label="Back to Home" title="Back to Home">
@@ -43,21 +48,17 @@
         <h2 class="section-title">Tech Arsenal</h2>
 
         <div class="skills-grid">
-          <!-- Small Boxes First -->
 
           <!-- AI & Machine Learning Basics -->
           <div class="skills-group card reveal">
-            <h3 class="text-xl font-bold mb-4 text-primary-600 flex items-center gap-2">
-              <i class="fas fa-brain text-2xl"></i>
-              AI & ML Basics
+            <h3>
+              🧠 AI &amp; ML Basics
             </h3>
-            <div class="space-y-4">
+            <div style="display:flex;flex-direction:column;gap:16px;">
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                  <i class="fas fa-code text-primary-500"></i>
-                  Language & Libraries
-                </h4>
-                <div class="flex flex-wrap gap-2 badges">
+                <h4 style="font-weight:600;margin-bottom:8px;font-size:0.95rem;color:var(--muted);">⚡ Language &amp;
+                  Libraries</h4>
+                <div class="badges">
                   <span class="badge">Python</span>
                   <span class="badge">Pandas</span>
                   <span class="badge">NumPy</span>
@@ -65,11 +66,8 @@
                 </div>
               </div>
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                  <i class="fas fa-robot text-primary-500"></i>
-                  Tools
-                </h4>
-                <div class="flex flex-wrap gap-2 badges">
+                <h4 style="font-weight:600;margin-bottom:8px;font-size:0.95rem;color:var(--muted);">🤖 Tools</h4>
+                <div class="badges">
                   <span class="badge">Jupyter</span>
                   <span class="badge">Colab</span>
                   <span class="badge">Streamlit</span>
@@ -81,11 +79,10 @@
 
           <!-- Database & Storage -->
           <div class="skills-group card reveal">
-            <h3 class="text-xl font-bold mb-4 text-primary-600 flex items-center gap-2">
-              <i class="fas fa-database text-2xl"></i>
-              Database
+            <h3>
+              🗄️ Database
             </h3>
-            <div class="flex flex-wrap gap-2 badges">
+            <div class="badges">
               <span class="badge">MongoDB</span>
               <span class="badge">PostgreSQL</span>
               <span class="badge">MySQL</span>
@@ -96,17 +93,13 @@
 
           <!-- Automation -->
           <div class="skills-group card reveal">
-            <h3 class="text-xl font-bold mb-4 text-primary-600 flex items-center gap-2">
-              <i class="fas fa-rocket text-2xl"></i>
-              Automation
+            <h3>
+              🚀 Automation
             </h3>
-            <div class="space-y-4">
+            <div style="display:flex;flex-direction:column;gap:16px;">
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                  <i class="fas fa-plug text-primary-500"></i>
-                  Workflow
-                </h4>
-                <div class="flex flex-wrap gap-2 badges">
+                <h4 style="font-weight:600;margin-bottom:8px;font-size:0.95rem;color:var(--muted);">🔌 Workflow</h4>
+                <div class="badges">
                   <span class="badge">n8n</span>
                   <span class="badge">Zapier</span>
                   <span class="badge">Make.com</span>
@@ -118,28 +111,22 @@
 
           <!-- Development Tools -->
           <div class="skills-group card reveal">
-            <h3 class="text-xl font-bold mb-4 text-primary-600 flex items-center gap-2">
-              <i class="fas fa-tools text-2xl"></i>
-              Dev Tools
+            <h3>
+              🛠️ Dev Tools
             </h3>
-            <div class="space-y-4">
+            <div style="display:flex;flex-direction:column;gap:16px;">
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                  <i class="fas fa-code-branch text-primary-500"></i>
-                  Version Control
+                <h4 style="font-weight:600;margin-bottom:8px;font-size:0.95rem;color:var(--muted);">🔀 Version Control
                 </h4>
-                <div class="flex flex-wrap gap-2 badges">
+                <div class="badges">
                   <span class="badge">Git</span>
                   <span class="badge">GitHub</span>
                   <span class="badge">GitLab</span>
                 </div>
               </div>
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                  <i class="fas fa-cube text-primary-500"></i>
-                  Managers
-                </h4>
-                <div class="flex flex-wrap gap-2 badges">
+                <h4 style="font-weight:600;margin-bottom:8px;font-size:0.95rem;color:var(--muted);">📦 Managers</h4>
+                <div class="badges">
                   <span class="badge">npm</span>
                   <span class="badge">pip</span>
                   <span class="badge">Homebrew</span>
@@ -150,17 +137,13 @@
 
           <!-- Design -->
           <div class="skills-group card reveal">
-            <h3 class="text-xl font-bold mb-4 text-primary-600 flex items-center gap-2">
-              <i class="fas fa-palette text-2xl"></i>
-              Design
+            <h3>
+              🎨 Design
             </h3>
-            <div class="space-y-4">
+            <div style="display:flex;flex-direction:column;gap:16px;">
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                  <i class="fas fa-pencil-ruler text-primary-500"></i>
-                  Tools
-                </h4>
-                <div class="flex flex-wrap gap-2 badges">
+                <h4 style="font-weight:600;margin-bottom:8px;font-size:0.95rem;color:var(--muted);">✏️ Tools</h4>
+                <div class="badges">
                   <span class="badge">Figma</span>
                   <span class="badge">Canva</span>
                   <span class="badge">Photoshop</span>
@@ -171,11 +154,10 @@
 
           <!-- Testing -->
           <div class="skills-group card reveal">
-            <h3 class="text-xl font-bold mb-4 text-primary-600 flex items-center gap-2">
-              <i class="fas fa-check-circle text-2xl"></i>
-              Testing
+            <h3>
+              ✅ Testing
             </h3>
-            <div class="flex flex-wrap gap-2 badges">
+            <div class="badges">
               <span class="badge">Jest</span>
               <span class="badge">Pytest</span>
               <span class="badge">Cypress</span>
@@ -183,21 +165,16 @@
             </div>
           </div>
 
-          <!-- Large Boxes Last -->
-
           <!-- DevOps & Cloud (Medium/Large) -->
           <div class="skills-group card reveal col-span-2">
-            <h3 class="text-xl font-bold mb-4 text-primary-600 flex items-center gap-2">
-              <i class="fas fa-cloud text-2xl"></i>
-              DevOps & Cloud
+            <h3>
+              ☁️ DevOps &amp; Cloud
             </h3>
-            <div class="space-y-4 skills-columns">
+            <div class="skills-columns">
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                  <i class="fas fa-cloud-upload-alt text-primary-500"></i>
-                  Cloud Platforms
+                <h4 style="font-weight:600;margin-bottom:8px;font-size:0.95rem;color:var(--muted);">🌐 Cloud Platforms
                 </h4>
-                <div class="flex flex-wrap gap-2 badges">
+                <div class="badges">
                   <span class="badge">AWS</span>
                   <span class="badge">Google Cloud</span>
                   <span class="badge">Vercel</span>
@@ -206,11 +183,8 @@
                 </div>
               </div>
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                  <i class="fas fa-cogs text-primary-500"></i>
-                  DevOps Tools
-                </h4>
-                <div class="flex flex-wrap gap-2 badges">
+                <h4 style="font-weight:600;margin-bottom:8px;font-size:0.95rem;color:var(--muted);">⚙️ DevOps Tools</h4>
+                <div class="badges">
                   <span class="badge">Docker</span>
                   <span class="badge">Kubernetes</span>
                   <span class="badge">GitHub Actions</span>
@@ -222,17 +196,13 @@
 
           <!-- Full Stack Development (Largest) -->
           <div class="skills-group card reveal col-span-3">
-            <h3 class="text-xl font-bold mb-4 text-primary-600 flex items-center gap-2">
-              <i class="fas fa-laptop-code text-2xl"></i>
-              Full Stack Development
+            <h3>
+              💻 Full Stack Development
             </h3>
             <div class="skills-columns-3">
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                  <i class="fas fa-paint-brush text-primary-500"></i>
-                  Frontend
-                </h4>
-                <div class="flex flex-wrap gap-2 badges">
+                <h4 style="font-weight:600;margin-bottom:8px;font-size:0.95rem;color:var(--muted);">🖌️ Frontend</h4>
+                <div class="badges">
                   <span class="badge">HTML5/CSS3</span>
                   <span class="badge">React.js</span>
                   <span class="badge">Next.js</span>
@@ -242,11 +212,8 @@
                 </div>
               </div>
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                  <i class="fas fa-server text-primary-500"></i>
-                  Backend
-                </h4>
-                <div class="flex flex-wrap gap-2 badges">
+                <h4 style="font-weight:600;margin-bottom:8px;font-size:0.95rem;color:var(--muted);">🖥️ Backend</h4>
+                <div class="badges">
                   <span class="badge">Node.js</span>
                   <span class="badge">Express</span>
                   <span class="badge">Django</span>
@@ -255,11 +222,8 @@
                 </div>
               </div>
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                  <i class="fas fa-shield-alt text-primary-500"></i>
-                  Security
-                </h4>
-                <div class="flex flex-wrap gap-2 badges">
+                <h4 style="font-weight:600;margin-bottom:8px;font-size:0.95rem;color:var(--muted);">🔒 Security</h4>
+                <div class="badges">
                   <span class="badge">JWT</span>
                   <span class="badge">OAuth</span>
                   <span class="badge">SSL/TLS</span>
@@ -273,6 +237,23 @@
       </div>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <ul class="footer-nav">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="#">Skills</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="container footer-copy">
+      <p>Copyright &copy; <span id="year"></span> Santhosh Kumar &ndash; All rights reserved &nbsp;|&nbsp; <a
+          href="terms.html" class="copy-link">Terms &amp; Conditions</a></p>
+    </div>
+  </footer>
 
   <script src="script.js" defer></script>
 </body>
