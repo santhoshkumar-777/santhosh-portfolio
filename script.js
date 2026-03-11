@@ -750,3 +750,61 @@ function initProjectCardClick() {
 
 // Initialize Project Card Click
 initProjectCardClick();
+
+// Modern Bento Services Hub V2 - Unique Interactive Logic
+function initBentoServices() {
+  const bentoCards = document.querySelectorAll('.bento-service-card');
+
+  bentoCards.forEach(card => {
+    // 1. Interactive Mouse Move Effects (Scanner & Subtle feedback)
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      // Update scan laser position
+      const percentX = (x / rect.width) * 100;
+      card.style.setProperty('--scan-x', `${percentX}%`);
+
+      // We removed the 3D rotate logic here as requested
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transition = 'all 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
+
+      setTimeout(() => {
+        if (!card.matches(':hover')) {
+          card.style.transition = 'all 0.2s linear';
+        }
+      }, 400);
+    });
+
+    // 2. Workflow Explorer Logic
+    const exploreBtn = card.querySelector('.explore-btn');
+    const closeBtn = card.querySelector('.close-workflow');
+
+    if (exploreBtn) {
+      exploreBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        card.classList.add('active-workflow');
+        // Disable tilt while viewing workflow for better readability
+        card.style.transform = 'none';
+        card.style.pointerEvents = 'none';
+        // Re-enable pointer events for the overlay items
+        const overlay = card.querySelector('.workflow-overlay');
+        if (overlay) overlay.style.pointerEvents = 'auto';
+      });
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        card.classList.remove('active-workflow');
+        card.style.pointerEvents = 'auto';
+      });
+    }
+  });
+}
+
+// Initialize Bento Hub
+initBentoServices();
