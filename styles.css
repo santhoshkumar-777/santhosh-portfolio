@@ -4092,3 +4092,390 @@ html {
     box-shadow: 0 4px 20px rgba(110, 231, 255, 0.7), 0 0 25px rgba(110, 231, 255, 0.3);
   }
 }
+
+/* ==========================================================================
+   UNIQUE HOLOGRAPHIC BENTO SERVICE HUB (REDESIGN V2)
+   ========================================================================== */
+#services .container {
+  overflow: visible;
+}
+
+#services .bento-services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, minmax(180px, auto));
+  gap: 20px;
+  padding: 40px 0;
+}
+
+/* Bento Card Base */
+.bento-service-card {
+  position: relative;
+  background: rgba(13, 17, 23, 0.7);
+  backdrop-filter: blur(25px) saturate(160%);
+  -webkit-backdrop-filter: blur(25px) saturate(160%);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 25px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  cursor: pointer;
+  z-index: 1;
+}
+
+/* Holographic Border Effect */
+.bento-service-card::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 26px;
+  padding: 2px;
+  background: conic-gradient(from var(--border-angle), transparent, var(--primary), var(--accent), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+  animation: borderRotate 4s linear infinite;
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes borderRotate {
+  from {
+    --border-angle: 0deg;
+  }
+
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+.bento-service-card:hover::after {
+  opacity: 1;
+}
+
+.bento-service-card:hover {
+  transform: translateY(-5px) scale(1.01);
+  border-color: transparent;
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7), 0 0 30px rgba(110, 231, 255, 0.08);
+}
+
+/* Specific Bento Sizes */
+.bento-large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.bento-tall {
+  grid-row: span 2;
+}
+
+.bento-wide {
+  grid-column: span 2;
+}
+
+/* Laser Scanner Animation */
+.laser-scanner {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to bottom, transparent, rgba(110, 231, 255, 0.15), rgba(110, 231, 255, 0.5), transparent);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.bento-service-card:hover .laser-scanner {
+  opacity: 1;
+  animation: scanSweep 3s linear infinite;
+}
+
+@keyframes scanSweep {
+  0% {
+    top: -50%;
+  }
+
+  100% {
+    top: 150%;
+  }
+}
+
+/* Card Content Styling */
+.bento-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.bento-icon {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: var(--primary);
+  filter: drop-shadow(0 0 10px rgba(110, 231, 255, 0.3));
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.bento-service-card:hover .bento-icon {
+  transform: scale(1.1) rotate(-5deg);
+  color: #fff;
+}
+
+.bento-service-card h3 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  background: linear-gradient(to right, #ffffff, #94a3b8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+}
+
+.bento-service-card p {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+/* Floating Tech Chips */
+.tech-hub {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.tech-chip {
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  transition: all 0.3s;
+}
+
+.bento-service-card:hover .tech-chip {
+  background: rgba(110, 231, 255, 0.1);
+  border-color: var(--primary);
+  transform: translateY(-3px);
+}
+
+/* Workflow Explorer Trigger */
+.explore-btn {
+  margin-top: 25px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 12px 24px;
+  border-radius: 14px;
+  background: rgba(110, 231, 255, 0.05);
+  border: 1px solid rgba(110, 231, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  opacity: 0.85;
+  /* Slightly less opaque by default, pops on hover */
+}
+
+.explore-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(110, 231, 255, 0.15),
+      transparent);
+  transition: all 0.6s ease;
+}
+
+.explore-btn:hover::before {
+  left: 100%;
+}
+
+.explore-btn svg {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.bento-service-card:hover .explore-btn {
+  opacity: 1;
+  background: rgba(110, 231, 255, 0.12);
+  border-color: rgba(110, 231, 255, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(110, 231, 255, 0.2);
+}
+
+.explore-btn:hover svg {
+  transform: translateX(5px) scale(1.1);
+}
+
+/* Workflow Overlay */
+.workflow-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-alt);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transform: translateY(100%);
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 10;
+  border-radius: 32px;
+}
+
+.bento-service-card.active-workflow .workflow-overlay {
+  transform: translateY(0);
+}
+
+.workflow-step {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.bento-service-card.active-workflow .workflow-step {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.bento-service-card.active-workflow .workflow-step:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.bento-service-card.active-workflow .workflow-step:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.bento-service-card.active-workflow .workflow-step:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.step-num {
+  width: 32px;
+  height: 32px;
+  background: var(--primary);
+  color: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.step-info h4 {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.step-info p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.close-workflow {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Bento Features List (to fill space in larger cards) */
+.bento-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bento-features-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: var(--muted);
+  transition: all 0.3s ease;
+}
+
+.bento-features-list li span {
+  color: var(--primary);
+  font-size: 0.8rem;
+  text-shadow: 0 0 8px rgba(110, 231, 255, 0.4);
+}
+
+.bento-service-card:hover .bento-features-list li {
+  color: #fff;
+  transform: translateX(5px);
+}
+
+.bento-service-card:hover .bento-features-list li:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.bento-service-card:hover .bento-features-list li:nth-child(2) {
+  transition-delay: 0.15s;
+}
+
+.bento-service-card:hover .bento-features-list li:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+.bento-service-card:hover .bento-features-list li:nth-child(4) {
+  transition-delay: 0.25s;
+}
+
+@media (max-width: 768px) {
+  #services .bento-services-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .bento-large,
+  .bento-tall,
+  .bento-wide {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+  }
+}
