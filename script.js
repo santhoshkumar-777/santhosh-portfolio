@@ -447,13 +447,6 @@ document.querySelectorAll('.tilt-mini').forEach(function (btn) {
   });
 });
 
-// Floating Contact button click -> navigate to Contact page
-var contactFab = document.getElementById('contactBtn');
-if (contactFab) {
-  contactFab.addEventListener('click', function () {
-    window.location.href = 'contact.html';
-  });
-}
 
 // logo feature removed
 
@@ -808,3 +801,32 @@ function initBentoServices() {
 
 // Initialize Bento Hub
 initBentoServices();
+
+// Initialize Social FAB
+function initSocialFab() {
+  const fabToggle = document.getElementById('socialFabToggle');
+  const fabContainer = document.getElementById('socialFabContainer');
+  if (fabToggle && fabContainer) {
+    fabToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      fabContainer.classList.toggle('active');
+    });
+    
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!fabContainer.contains(e.target) && fabContainer.classList.contains('active')) {
+        fabContainer.classList.remove('active');
+      }
+    });
+
+    // Close when clicking an item
+    const fabItems = fabContainer.querySelectorAll('.social-fab-item');
+    fabItems.forEach(item => {
+      item.addEventListener('click', () => {
+        fabContainer.classList.remove('active');
+      });
+    });
+  }
+}
+
+initSocialFab();
