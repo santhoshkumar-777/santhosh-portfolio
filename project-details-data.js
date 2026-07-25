@@ -14,7 +14,7 @@ const projectsData = {
         "isNew": true,
         "highlights": ["GPT-4 Integration", "Advanced NLP Models"],
         "liveLink": "#",
-        "githubLink": "#"
+        "githubLink": "https://github.com/santhoshkumar-coder650"
     },
     "investment": {
         "title": "AI Investment Planner",
@@ -31,7 +31,7 @@ const projectsData = {
         "isNew": false,
         "highlights": ["LSTM Neural Networks", "Real-time Predictions"],
         "liveLink": "#",
-        "githubLink": "#"
+        "githubLink": "https://github.com/santhoshkumar-coder650"
     },
     "calculator": {
         "title": "BrainyCalc",
@@ -46,7 +46,7 @@ const projectsData = {
         ],
         "stack": ["HTML5", "CSS3", "JavaScript"],
         "liveLink": "#",
-        "githubLink": "#"
+        "githubLink": "https://github.com/santhoshkumar-coder650"
     },
     "github": {
         "title": "GitHub Name Finder",
@@ -61,7 +61,7 @@ const projectsData = {
         ],
         "stack": ["React", "GitHub API", "Tailwind CSS", "Axios"],
         "liveLink": "#",
-        "githubLink": "#"
+        "githubLink": "https://github.com/santhoshkumar-coder650"
     },
     "brand": {
         "title": "Personal Brand Website",
@@ -76,7 +76,7 @@ const projectsData = {
         ],
         "stack": ["HTML5", "CSS3", "JavaScript", "GSAP"],
         "liveLink": "#",
-        "githubLink": "#"
+        "githubLink": "https://github.com/santhoshkumar-coder650"
     },
     "rag": {
         "title": "Personal Chatbot (RAG)",
@@ -93,7 +93,7 @@ const projectsData = {
         "isNew": true,
         "highlights": ["LlamaIndex v0.9", "ChromaDB Vector Store", "Multi-Modal Support"],
         "liveLink": "#",
-        "githubLink": "#"
+        "githubLink": "https://github.com/santhoshkumar-coder650"
     },
     "vpn": {
         "title": "SecureVPN",
@@ -108,7 +108,7 @@ const projectsData = {
         ],
         "stack": ["Python", "PyQt5", "OpenVPN API", "Networking"],
         "liveLink": "#",
-        "githubLink": "#"
+        "githubLink": "https://github.com/santhoshkumar-coder650"
     },
     "code": {
         "title": "Code Editor",
@@ -123,7 +123,7 @@ const projectsData = {
         ],
         "stack": ["React", "CodeMirror", "Framer Motion"],
         "liveLink": "#",
-        "githubLink": "#"
+        "githubLink": "https://github.com/santhoshkumar-coder650"
     },
     "bug": {
         "title": "Bug Tracker",
@@ -138,6 +138,91 @@ const projectsData = {
         ],
         "stack": ["React", "Firebase Auth", "Firestore", "MUI"],
         "liveLink": "#",
-        "githubLink": "#"
+        "githubLink": "https://github.com/santhoshkumar-coder650"
+    },
+    "omnishop": {
+        "title": "OmniShop",
+        "category": "Web / E-Commerce",
+        "tagline": "Next-Gen E-Commerce experience with dynamic pricing.",
+        "description": "OmniShop is a modern, high-performance e-commerce platform built to handle massive scale. It features dynamic pricing algorithms, seamless payment gateway integrations, and a beautiful, intuitive user interface for an unparalleled shopping experience.",
+        "features": [
+            "Dynamic pricing and AI product recommendations",
+            "Seamless integration with Stripe and PayPal",
+            "Real-time inventory management dashboard",
+            "Lightning-fast cart and checkout flow"
+        ],
+        "stack": ["Next.js", "Node.js", "PostgreSQL", "Stripe"],
+        "isNew": true,
+        "highlights": ["Scalable Architecture", "Dynamic Pricing"],
+        "liveLink": "#",
+        "githubLink": "https://github.com/santhoshkumar-coder650"
+    },
+    "procvai": {
+        "title": "ProCV AI",
+        "category": "AI / Web",
+        "tagline": "Intelligent resume builder powered by LLMs.",
+        "description": "ProCV AI takes the hassle out of resume creation. By analyzing a user's raw experience and target job description, the AI engine intelligently structures, rewrites, and optimizes the resume for Applicant Tracking Systems (ATS).",
+        "features": [
+            "ATS-optimized resume generation",
+            "AI-powered bullet point enhancement",
+            "Multiple professional templates",
+            "Cover letter auto-generator"
+        ],
+        "stack": ["React", "OpenAI API", "Express", "MongoDB"],
+        "isNew": true,
+        "highlights": ["AI Text Generation", "ATS Optimization"],
+        "liveLink": "#",
+        "githubLink": "https://github.com/santhoshkumar-coder650"
+    },
+    "auramusic": {
+        "title": "Aura Music",
+        "category": "Web / Streaming",
+        "tagline": "High-fidelity music streaming service.",
+        "description": "Aura Music offers a sleek, ad-free listening experience. Designed with a dark-mode first UI, it supports high-fidelity audio playback, custom playlists, and algorithmic radio stations based on listening habits.",
+        "features": [
+            "High-fidelity audio streaming",
+            "Algorithmic mood-based playlists",
+            "Real-time synchronized lyrics",
+            "Social listening rooms"
+        ],
+        "stack": ["React", "Redux Toolkit", "Web Audio API", "Node.js"],
+        "isNew": true,
+        "highlights": ["Web Audio Processing", "Real-time Sync"],
+        "liveLink": "#",
+        "githubLink": "https://github.com/santhoshkumar-coder650"
+    },
+    "realtyvision": {
+        "title": "RealtyVision",
+        "category": "Web / Real Estate",
+        "tagline": "Immersive real estate platform with virtual tours.",
+        "description": "RealtyVision revolutionizes property browsing. It aggregates high-quality property listings and provides integrated 360-degree virtual tours, interactive maps, and AI-driven property valuation estimates.",
+        "features": [
+            "Interactive map-based property search",
+            "Integrated 360-degree virtual tours",
+            "AI property valuation estimates",
+            "Secure messaging between agents and buyers"
+        ],
+        "stack": ["Next.js", "Mapbox GL", "Prisma", "PostgreSQL"],
+        "isNew": true,
+        "highlights": ["360 Virtual Tours", "Map Integration"],
+        "liveLink": "#",
+        "githubLink": "https://github.com/santhoshkumar-coder650"
+    },
+    "edusphere": {
+        "title": "EduSphere",
+        "category": "Web / EdTech",
+        "tagline": "Interactive online learning ecosystem.",
+        "description": "EduSphere is a comprehensive Learning Management System (LMS) that bridges the gap between instructors and students. It features interactive video courses, real-time quizzes, and a gamified progression system.",
+        "features": [
+            "High-definition video course streaming",
+            "Interactive quizzes and assignments",
+            "Gamified learning paths and badges",
+            "Instructor analytics dashboard"
+        ],
+        "stack": ["React", "Node.js", "AWS S3", "MongoDB"],
+        "isNew": true,
+        "highlights": ["Video Streaming", "Gamification"],
+        "liveLink": "#",
+        "githubLink": "https://github.com/santhoshkumar-coder650"
     }
 };
