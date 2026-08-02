@@ -176,12 +176,12 @@ initSimpleHover();
 // Enhanced typing effect with more dynamic behavior
 function initEnhancedTyping() {
   const words = [
-    'AI Enthusiast',
-    'Web Developer',
-    'Chatbot Creator',
-    'Freelancer',
+    'AI Full Stack Engineer',
+    'AI Developer',
+    'Full Stack Developer',
+    'Tech Innovator',
     'Problem Solver',
-    'Creative Thinker'
+    'Freelancer'
   ];
 
   const typedEl = document.getElementById('typed-words');
@@ -447,13 +447,6 @@ document.querySelectorAll('.tilt-mini').forEach(function (btn) {
   });
 });
 
-// Floating Contact button click -> navigate to Contact page
-var contactFab = document.getElementById('contactBtn');
-if (contactFab) {
-  contactFab.addEventListener('click', function () {
-    window.location.href = 'contact.html';
-  });
-}
 
 // logo feature removed
 
@@ -513,7 +506,7 @@ function initTypewriterModal() {
 
   if (!aboutSection || !typewriterModal || !typewriterText) return;
 
-  const aboutContent = "💡 I'm an AI Developer & Junior Web Developer, driven by a passion for building intelligent solutions and seamless digital experiences.\n\n🧠 My curiosity for AI programming pushes me to explore machine learning and automation, turning complex problems into smart, practical solutions.\n\n📱 On the web side, I focus on creating modern, responsive, and user-friendly applications that blend performance with design.\n\n✨ With a mindset of continuous learning, I aim to combine creativity and technology to craft impactful projects that truly make a difference.";
+  const aboutContent = "🚀 I am an AI-Powered Full Stack Engineer specializing in building intelligent, scalable digital solutions from concept to deployment.\n\n🧠 My core expertise combines full-stack web architectures (React, Next.js, Node.js) with state-of-the-art AI systems (OpenAI API, LangChain, n8n automation, and RAG pipelines).\n\n⚡ I build production-ready applications that don't just process data—they reason, automate workflows, and deliver sleek, futuristic user experiences.\n\n✨ Driven by continuous innovation, I bridge the gap between creative UI design, robust backend engineering, and cutting-edge artificial intelligence.";
 
   let isTyping = false;
 
@@ -688,44 +681,101 @@ function initResumeModal() {
 // Initialize Resume Modal
 initResumeModal();
 
-// Project Filtering
+// Project Filtering & View More Toggle
 function initProjectFilter() {
   const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
+  const projectCards = Array.from(document.querySelectorAll('.project-card'));
+  const viewMoreBtn = document.getElementById('viewMoreProjectsBtn');
+  const viewMoreText = document.getElementById('viewMoreText');
+  const viewMoreIcon = document.getElementById('viewMoreIcon');
 
-  if (filterBtns.length === 0) return;
+  if (projectCards.length === 0) return;
 
+  const INITIAL_LIMIT = 6;
+  let isExpanded = false;
+  let currentFilter = 'all';
+
+  function updateVisibility() {
+    // Filter matching cards
+    const matchingCards = projectCards.filter(card => {
+      const categories = card.getAttribute('data-category');
+      return currentFilter === 'all' || (categories && categories.includes(currentFilter));
+    });
+
+    const nonMatchingCards = projectCards.filter(card => !matchingCards.includes(card));
+
+    // Hide non-matching cards
+    nonMatchingCards.forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.display = 'none';
+      card.classList.remove('visible');
+    });
+
+    // Handle matching cards visibility based on INITIAL_LIMIT & isExpanded
+    matchingCards.forEach((card, index) => {
+      if (isExpanded || index < INITIAL_LIMIT) {
+        card.style.display = 'block';
+        setTimeout(() => {
+          card.classList.add('visible');
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, 50);
+      } else {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          card.style.display = 'none';
+          card.classList.remove('visible');
+        }, 200);
+      }
+    });
+
+    // Handle View More button visibility & text
+    if (viewMoreBtn) {
+      if (matchingCards.length <= INITIAL_LIMIT) {
+        viewMoreBtn.style.display = 'none';
+      } else {
+        viewMoreBtn.style.display = 'inline-flex';
+        if (isExpanded) {
+          if (viewMoreText) viewMoreText.textContent = 'Show Less';
+          if (viewMoreIcon) viewMoreIcon.style.transform = 'rotate(180deg)';
+        } else {
+          if (viewMoreText) viewMoreText.textContent = `View All Projects (${matchingCards.length})`;
+          if (viewMoreIcon) viewMoreIcon.style.transform = 'rotate(0deg)';
+        }
+      }
+    }
+  }
+
+  // Filter button clicks
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      // Remove active class from all buttons
       filterBtns.forEach(b => b.classList.remove('active'));
-      // Add active class to clicked button
       btn.classList.add('active');
-
-      const filterValue = btn.getAttribute('data-filter');
-
-      projectCards.forEach(card => {
-        const categories = card.getAttribute('data-category');
-
-        if (filterValue === 'all' || (categories && categories.includes(filterValue))) {
-          card.style.display = 'block';
-          // Trigger reflow/animation
-          setTimeout(() => {
-            card.classList.add('visible');
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          }, 50);
-        } else {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(20px)';
-          setTimeout(() => {
-            card.style.display = 'none';
-            card.classList.remove('visible');
-          }, 300);
-        }
-      });
+      currentFilter = btn.getAttribute('data-filter') || 'all';
+      isExpanded = false; // Reset expand state on filter change
+      updateVisibility();
     });
   });
+
+  // View More button click
+  if (viewMoreBtn) {
+    viewMoreBtn.addEventListener('click', () => {
+      isExpanded = !isExpanded;
+      updateVisibility();
+
+      if (!isExpanded) {
+        const projectsSection = document.getElementById('projects');
+        if (projectsSection) {
+          projectsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  }
+
+  // Initial calculation
+  updateVisibility();
 }
 
 // Initialize Project Filter
@@ -750,3 +800,455 @@ function initProjectCardClick() {
 
 // Initialize Project Card Click
 initProjectCardClick();
+
+// Modern Bento Services Hub V2 - Unique Interactive Logic
+function initBentoServices() {
+  const bentoCards = document.querySelectorAll('.bento-service-card');
+
+  bentoCards.forEach(card => {
+    // 1. Interactive Mouse Move Effects (Scanner & Subtle feedback)
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      // Update scan laser position
+      const percentX = (x / rect.width) * 100;
+      card.style.setProperty('--scan-x', `${percentX}%`);
+
+      // We removed the 3D rotate logic here as requested
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transition = 'all 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
+
+      setTimeout(() => {
+        if (!card.matches(':hover')) {
+          card.style.transition = 'all 0.2s linear';
+        }
+      }, 400);
+    });
+
+    // 2. Workflow Explorer Logic
+    const exploreBtn = card.querySelector('.explore-btn');
+    const closeBtn = card.querySelector('.close-workflow');
+
+    if (exploreBtn) {
+      exploreBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        card.classList.add('active-workflow');
+        // Disable tilt while viewing workflow for better readability
+        card.style.transform = 'none';
+        card.style.pointerEvents = 'none';
+        // Re-enable pointer events for the overlay items
+        const overlay = card.querySelector('.workflow-overlay');
+        if (overlay) overlay.style.pointerEvents = 'auto';
+      });
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        card.classList.remove('active-workflow');
+        card.style.pointerEvents = 'auto';
+      });
+    }
+  });
+}
+
+// Initialize Bento Hub
+initBentoServices();
+
+// Preloader Logic
+const hidePreloader = () => {
+  const preloader = document.getElementById('preloader');
+  if (preloader && !preloader.classList.contains('fade-out')) {
+    // A slight delay as requested ("light ahh mattum gap erutha pothum")
+    setTimeout(() => {
+      preloader.classList.add('fade-out');
+      // Hide completely after the fade transition (500ms)
+      setTimeout(() => {
+        preloader.style.display = 'none';
+      }, 500);
+    }, 800); 
+  }
+};
+
+// Use load for proper resource loading, but add fallback for hanging resources/live server
+window.addEventListener('load', hidePreloader);
+document.addEventListener('DOMContentLoaded', hidePreloader);
+setTimeout(hidePreloader, 3000); // 3-second failsafe
+
+// =======================================================================
+// New Enhancements: Back-to-Top & Interactive Project Links
+// =======================================================================
+
+function initEnhancements() {
+  // 1. Back to Top Button Logic
+  const backToTopBtn = document.getElementById('backToTop');
+  
+  if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+
+  // 2. Interactive Live Links in Project Cards
+  const projectCards = document.querySelectorAll('.project-card');
+  projectCards.forEach(card => {
+    // Select the "Live" button which is typically the first .btn.small in .links
+    const liveBtn = card.querySelector('.links .btn.small:not(.ghost)');
+    if (liveBtn) {
+      liveBtn.addEventListener('click', (e) => {
+        const href = liveBtn.getAttribute('href');
+        // If it's a dummy link, show a cool toast notification instead of jumping up!
+        if (href === '#' || href === '') {
+          e.preventDefault();
+          e.stopPropagation(); // prevent card click event
+          
+          if (typeof showToast === 'function') {
+            showToast("🚀 Live preview launching soon! Check source code for now.");
+          } else {
+            // Fallback if showToast isn't available
+            alert("🚀 Live preview launching soon! Check source code for now.");
+          }
+        }
+      });
+    }
+  });
+}
+
+// Initialize enhancements
+initEnhancements();
+
+// --- Skills Roadmap & Modern Skill Card Modal ---
+const skillsRoadmap = {
+  'Python': {
+    category: 'AI & Backend Core',
+    perks: ['Core language for AI, Data Science & Automation', 'Fast prototyping with extensive AI packages', 'High-concurrency backend API integration'],
+    steps: [
+      { num: '01', title: 'Syntax & OOP', desc: 'Variables, Functions, Classes & Asyncio' },
+      { num: '02', title: 'Data Engines', desc: 'NumPy & Pandas data manipulation' },
+      { num: '03', title: 'AI Ecosystem', desc: 'LangChain, OpenAI API & RAG Pipelines' },
+      { num: '04', title: 'Production', desc: 'FastAPI backends, Docker & Async scaling' }
+    ],
+    tip: 'Build RAG pipelines to master end-to-end Python AI deployment.'
+  },
+  'OpenAI API': {
+    category: 'LLM & Multimodal AI',
+    perks: ['Access GPT-4o, DALL-E 3 & Whisper models', 'Structured JSON outputs & function calling', 'Vector embeddings for semantic search'],
+    steps: [
+      { num: '01', title: 'Auth & SDK', desc: 'API keys, client initialization & limits' },
+      { num: '02', title: 'Prompts & JSON', desc: 'System prompts & structured output mode' },
+      { num: '03', title: 'Tool Calling', desc: 'Connecting LLMs to external APIs & DBs' },
+      { num: '04', title: 'Embeddings', desc: 'Dense vectors for RAG knowledge search' }
+    ],
+    tip: 'Combine Function Calling with external web APIs to create autonomous actions.'
+  },
+  'LangChain': {
+    category: 'AI Orchestration',
+    perks: ['Standard framework to connect LLMs with custom data', 'Modular prompt templates, chains & memory', 'Built-in document loaders & vector retrievers'],
+    steps: [
+      { num: '01', title: 'Core Chains', desc: 'LLMs, PromptTemplates & OutputParsers' },
+      { num: '02', title: 'Memory', desc: 'Conversation state & session buffer' },
+      { num: '03', title: 'RAG Pipeline', desc: 'Document loaders & vector store search' },
+      { num: '04', title: 'Autonomous Agents', desc: 'Tools & ReAct decision-making loops' }
+    ],
+    tip: 'Use LCEL (LangChain Expression Language) for clean, composable AI chains.'
+  },
+  'RAG Systems': {
+    category: 'Knowledge Retrieval AI',
+    perks: ['Grounds AI in private enterprise data', 'Eliminates hallucinations without LLM retraining', 'Real-time vector search across documents'],
+    steps: [
+      { num: '01', title: 'Chunking', desc: 'Parsing PDFs & SQL into clean text chunks' },
+      { num: '02', title: 'Embedding', desc: 'Vectorizing text with OpenAI/HuggingFace' },
+      { num: '03', title: 'Vector Store', desc: 'Indexing vectors in Pinecone or Supabase' },
+      { num: '04', title: 'Generation', desc: 'Injecting top-K context into LLM prompts' }
+    ],
+    tip: 'Hybrid search (Keyword + Vector similarity) produces the highest retrieval accuracy.'
+  },
+  'Agentic AI': {
+    category: 'Autonomous Systems',
+    perks: ['Self-directed agents that execute complex workflows', 'Built-in self-correction & evaluation loops', 'Multi-agent collaboration for enterprise scale'],
+    steps: [
+      { num: '01', title: 'ReAct Loop', desc: 'Reasoning -> Action -> Observation cycle' },
+      { num: '02', title: 'Tool Binding', desc: 'Connecting web search, code runners & DBs' },
+      { num: '03', title: 'Multi-Agent', desc: 'Supervisor & worker agent hierarchy' },
+      { num: '04', title: 'Guardrails', desc: 'Safety checks & human-in-the-loop limits' }
+    ],
+    tip: 'Stateful graph agents (LangGraph/CrewAI) handle complex business logic best.'
+  },
+  'Next.js 14': {
+    category: 'Full-Stack React',
+    perks: ['Full-stack React framework with App Router', 'Server Components for zero-bundle-size speed', 'Built-in API routes & Server Actions'],
+    steps: [
+      { num: '01', title: 'App Router', desc: 'Layouts, Pages, Loading UI & Routing' },
+      { num: '02', title: 'Server Components', desc: 'RSC data fetching & Server Actions' },
+      { num: '03', title: 'Caching', desc: 'Revalidation & dynamic rendering' },
+      { num: '04', title: 'Edge Deploy', desc: 'Vercel deployment & Edge Middleware' }
+    ],
+    tip: 'Fetch data directly in React Server Components to eliminate client-side state boilerplate.'
+  },
+  'React.js': {
+    category: 'Modern UI Frontend',
+    perks: ['Component-based UI architecture', 'Virtual DOM for blazing fast rendering', 'Ecosystem of thousands of UI libraries'],
+    steps: [
+      { num: '01', title: 'JSX & Props', desc: 'Component structure & data passing' },
+      { num: '02', title: 'Hooks', desc: 'useState, useEffect & custom hooks' },
+      { num: '03', title: 'State Mgmt', desc: 'Context API, Zustand or Redux' },
+      { num: '04', title: 'Performance', desc: 'React.memo & lazy loading components' }
+    ],
+    tip: 'Keep component state local to minimize unnecessary re-renders.'
+  },
+  'FastAPI': {
+    category: 'Python Web Backend',
+    perks: ['High-speed Python framework built on Pydantic', 'Auto-generated Swagger/OpenAPI docs', 'Native async/await for AI concurrency'],
+    steps: [
+      { num: '01', title: 'Routes & Query', desc: 'Path operations & request parameters' },
+      { num: '02', title: 'Pydantic', desc: 'Data validation schemas & type safety' },
+      { num: '03', title: 'Async DB', desc: 'Asynchronous ORM & database queries' },
+      { num: '04', title: 'Deployment', desc: 'Uvicorn, Gunicorn & Docker containers' }
+    ],
+    tip: 'Use Pydantic models for both request validation and response filtering.'
+  },
+  'Node.js': {
+    category: 'Backend Runtime',
+    perks: ['Non-blocking asynchronous event-driven I/O', 'Single language (JS/TS) full-stack development', 'Massive NPM package ecosystem'],
+    steps: [
+      { num: '01', title: 'Core Modules', desc: 'Event loop, FS, HTTP & Path' },
+      { num: '02', title: 'Async Patterns', desc: 'Promises, Async/Await & Streams' },
+      { title: '03', desc: 'API Frameworks', desc: 'Express / Fastify REST API architecture' },
+      { num: '04', title: 'Production', desc: 'PM2 process manager & clustering' }
+    ],
+    tip: 'Avoid blocking the event loop with synchronous operations.'
+  },
+  'n8n': {
+    category: 'Workflow Automation',
+    perks: ['Fair-code workflow engine with 300+ nodes', 'Self-hostable for complete privacy', 'Drag-and-drop AI agent & LangChain nodes'],
+    steps: [
+      { num: '01', title: 'Triggers', desc: 'Webhooks, Schedules & Event triggers' },
+      { num: '02', title: 'Transform', desc: 'Code nodes, Expressions & JSON mapping' },
+      { num: '03', title: 'AI Integration', desc: 'LangChain AI Agent & Vector nodes' },
+      { num: '04', title: 'Self-Host', desc: 'Docker deployment & Postgres backend' }
+    ],
+    tip: 'Use sub-workflows to modularize complex enterprise automations.'
+  },
+  'Pinecone': {
+    category: 'Cloud Vector DB',
+    perks: ['Cloud-native vector database for massive scale', 'Sub-millisecond similarity search latency', 'Metadata filtering for RAG accuracy'],
+    steps: [
+      { num: '01', title: 'Indexes', desc: 'Serverless vector index creation' },
+      { num: '02', title: 'Vector Upsert', desc: 'Inserting embedding vectors with metadata' },
+      { num: '03', title: 'Query & Filter', desc: 'Top-K cosine similarity search' },
+      { num: '04', title: 'RAG Connect', desc: 'LangChain & OpenAI integration' }
+    ],
+    tip: 'Add rich metadata tags (category, author, date) to enable precise filtered retrieval.'
+  },
+  'PostgreSQL': {
+    category: 'Relational Database',
+    perks: ['Enterprise-grade SQL relational database', 'ACID compliance & JSONB support', 'pgvector extension for AI embeddings'],
+    steps: [
+      { num: '01', title: 'SQL & Queries', desc: 'SELECT, JOINs, Grouping & Aggregations' },
+      { num: '02', title: 'Schema Design', desc: 'Indexing, Foreign Keys & Normalization' },
+      { num: '03', title: 'Advanced SQL', desc: 'CTEs, Window functions & Transactions' },
+      { num: '04', title: 'pgvector', desc: 'Vector similarity search setup' }
+    ],
+    tip: 'Add B-tree indexes on foreign keys to optimize complex query JOIN performance.'
+  },
+  'AWS': {
+    category: 'Cloud Infrastructure',
+    perks: ['Global cloud platform for computing & storage', 'Scalable serverless (Lambda) & container (ECS) hosting', 'Enterprise security & IAM policies'],
+    steps: [
+      { num: '01', title: 'Core Storage', desc: 'EC2 servers, S3 buckets & IAM roles' },
+      { num: '02', title: 'Serverless', desc: 'AWS Lambda, API Gateway & DynamoDB' },
+      { num: '03', title: 'Networking', desc: 'VPC subnets, Route 53 & CloudFront CDN' },
+      { num: '04', title: 'CI/CD', desc: 'Elastic Beanstalk & CloudWatch monitoring' }
+    ],
+    tip: 'Use S3 with CloudFront CDN for ultra-fast global static asset distribution.'
+  },
+  'Docker': {
+    category: 'Containerization',
+    perks: ['Ensures consistent runtime environments anywhere', 'Isolated containers for microservices & AI models', 'Lightweight, reproducible image builds'],
+    steps: [
+      { num: '01', title: 'Images', desc: 'Dockerfile creation, base images & run commands' },
+      { num: '02', title: 'Containers', desc: 'Port mapping, environment variables & logs' },
+      { num: '03', title: 'Compose', desc: 'docker-compose.yml multi-container orchestration' },
+      { num: '04', title: 'Optimization', desc: 'Multi-stage builds & minimal image size' }
+    ],
+    tip: 'Use multi-stage Docker builds to keep production images tiny and secure.'
+  }
+};
+
+const defaultSkillCardData = {
+  category: 'Core Engineering',
+  perks: ['Enhances developer efficiency and speed', 'Provides robust building blocks for production apps', 'Widely adopted tech stack across top teams'],
+  steps: [
+    { num: '01', title: 'Foundations', desc: 'Syntax, core concepts & environment setup' },
+    { num: '02', title: 'Components', desc: 'Building modular parts & API routes' },
+    { num: '03', title: 'Integration', desc: 'Database connections & state handling' },
+    { num: '04', title: 'Mastery', desc: 'Production deployment & optimization' }
+  ],
+  tip: 'Mastering core principles allows rapid adoption of any technology.'
+};
+
+window.showRoadmap = function(skillName) {
+  const modal = document.getElementById('roadmapModal');
+  const skillNameEl = document.getElementById('roadmapSkillName');
+  const stepsContainer = document.getElementById('roadmapStepsContainer');
+  
+  if (!modal || !skillNameEl || !stepsContainer) return;
+
+  skillNameEl.textContent = skillName;
+  stepsContainer.innerHTML = '';
+
+  const info = skillsRoadmap[skillName] || defaultSkillCardData;
+
+  // Build Sleek Modern Skill Card
+  const card = document.createElement('div');
+  card.className = 'modern-skill-modal-card';
+
+  // Category Tag
+  const categoryTag = document.createElement('div');
+  categoryTag.className = 'skill-modal-category';
+  categoryTag.innerHTML = `⚡ <span>${info.category}</span>`;
+  card.appendChild(categoryTag);
+
+  // Perks / Advantages (Short Chips)
+  const perksDiv = document.createElement('div');
+  perksDiv.className = 'skill-modal-perks';
+  info.perks.forEach(perk => {
+    const chip = document.createElement('div');
+    chip.className = 'perk-chip';
+    chip.innerHTML = `<span>✦</span> ${perk}`;
+    perksDiv.appendChild(chip);
+  });
+  card.appendChild(perksDiv);
+
+  // Stepper Roadmap (Sleek 4-Step Grid)
+  const stepperTitle = document.createElement('h4');
+  stepperTitle.className = 'skill-modal-subtitle';
+  stepperTitle.innerHTML = `🗺️ Mastery Roadmap`;
+  card.appendChild(stepperTitle);
+
+  const stepsGrid = document.createElement('div');
+  stepsGrid.className = 'modern-steps-grid';
+
+  info.steps.forEach(step => {
+    const stepCard = document.createElement('div');
+    stepCard.className = 'modern-step-card';
+
+    stepCard.innerHTML = `
+      <div class="step-badge">${step.num || '0' + (index + 1)}</div>
+      <div class="step-info">
+        <h5>${step.title}</h5>
+        <p>${step.desc}</p>
+      </div>
+    `;
+    stepsGrid.appendChild(stepCard);
+  });
+
+  card.appendChild(stepsGrid);
+
+  // Pro Tip Footer
+  if (info.tip) {
+    const tipDiv = document.createElement('div');
+    tipDiv.className = 'skill-modal-tip';
+    tipDiv.innerHTML = `💡 <strong>Pro Tip:</strong> ${info.tip}`;
+    card.appendChild(tipDiv);
+  }
+
+  stepsContainer.appendChild(card);
+
+  modal.classList.add('resume-modal-open');
+  document.body.style.overflow = 'hidden';
+};
+
+function escapeHtml(text) {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function initRoadmapModal() {
+  const modal = document.getElementById('roadmapModal');
+  const closeBtn = document.getElementById('closeRoadmapBtn');
+  
+  if (!modal || !closeBtn) return;
+  
+  const closeModal = () => {
+    modal.classList.remove('resume-modal-open');
+    document.body.style.overflow = '';
+  };
+  
+  closeBtn.addEventListener('click', closeModal);
+  
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+  
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('resume-modal-open')) {
+      closeModal();
+    }
+  });
+
+  // Init Skill Tab Filter on skills.html
+  initSkillTabFilter();
+}
+
+// Skill Tab Filtering Logic
+function initSkillTabFilter() {
+  const tabBtns = document.querySelectorAll('.skill-tab-btn');
+  const skillCards = document.querySelectorAll('[data-skill-category]');
+
+  if (tabBtns.length === 0 || skillCards.length === 0) return;
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-skill-filter');
+
+      skillCards.forEach(card => {
+        const cat = card.getAttribute('data-skill-category');
+        if (filter === 'all' || cat === filter) {
+          card.style.display = '';
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, 50);
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(10px)';
+          setTimeout(() => {
+            card.style.display = 'none';
+          }, 200);
+        }
+      });
+    });
+  });
+}
+
+// Ensure it binds correctly on load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initRoadmapModal);
+} else {
+  initRoadmapModal();
+}

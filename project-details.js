@@ -132,28 +132,19 @@ function populateProjectDetails(project) {
     const liveLink = document.getElementById('live-link');
     const githubLink = document.getElementById('github-link');
 
+    liveLink.style.display = 'flex';
+    githubLink.style.display = 'flex';
+
     if (project.liveLink && project.liveLink !== '#') {
         liveLink.href = project.liveLink;
-        liveLink.style.display = 'inline-flex';
     } else {
-        liveLink.style.display = 'none';
+        liveLink.href = project.githubLink || 'https://github.com/santhoshkumar-coder650';
     }
 
     if (project.githubLink && project.githubLink !== '#') {
         githubLink.href = project.githubLink;
-        githubLink.style.display = 'inline-flex';
     } else {
-        githubLink.style.display = 'none';
-    }
-
-    // Add "Coming Soon" if both links are hidden
-    if (liveLink.style.display === 'none' && githubLink.style.display === 'none') {
-        const linksContainer = document.querySelector('.project-links');
-        const p = document.createElement('p');
-        p.textContent = "Links coming soon!";
-        p.style.color = "var(--muted)";
-        p.style.fontStyle = "italic";
-        linksContainer.appendChild(p);
+        githubLink.href = 'https://github.com/santhoshkumar-coder650';
     }
 }
 

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SKILLS — Santhosh Kumar</title>
+  <title>SANTHOSH PORTFOLIO</title>
   <meta name="description"
     content="Skills of Santhosh Kumar - Full Stack, AI Tools &amp; Automation, Design &amp; Performance." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,188 +46,123 @@
     <section id="skills" class="section section-pad">
       <div class="container">
         <h2 class="section-title">Tech Arsenal</h2>
+        <p class="skills-hint">💡 <span>Click any technology card</span> to inspect its <strong>Key Advantages, Real-World Use Cases, README Snippet</strong>, and <strong>Learning Roadmap</strong>.</p>
+
+        <!-- Category Filter Tabs -->
+        <div class="skills-filter-container">
+          <button class="skill-tab-btn active" data-skill-filter="all">⚡ All Tech Arsenal</button>
+          <button class="skill-tab-btn" data-skill-filter="ai">🧠 AI &amp; Agents</button>
+          <button class="skill-tab-btn" data-skill-filter="fullstack">💻 Full Stack Web</button>
+          <button class="skill-tab-btn" data-skill-filter="automation">🚀 AI Workflows</button>
+          <button class="skill-tab-btn" data-skill-filter="db">🗄️ Vector DBs &amp; Data</button>
+          <button class="skill-tab-btn" data-skill-filter="devops">☁️ Cloud &amp; DevOps</button>
+        </div>
 
         <div class="skills-grid">
 
-          <!-- AI & Machine Learning Basics -->
-          <div class="skills-group card reveal">
-            <h3>
-              🧠 AI &amp; ML Basics
-            </h3>
-            <div style="display:flex;flex-direction:column;gap:16px;">
-              <div>
-                <h4 style="font-weight:600;margin-bottom:8px;font-size:0.95rem;color:var(--muted);">⚡ Language &amp;
-                  Libraries</h4>
-                <div class="badges">
-                  <span class="badge">Python</span>
-                  <span class="badge">Pandas</span>
-                  <span class="badge">NumPy</span>
-                  <span class="badge">Scikit-learn</span>
-                </div>
-              </div>
-              <div>
-                <h4 style="font-weight:600;margin-bottom:8px;font-size:0.95rem;color:var(--muted);">🤖 Tools</h4>
-                <div class="badges">
-                  <span class="badge">Jupyter</span>
-                  <span class="badge">Colab</span>
-                  <span class="badge">Streamlit</span>
-                  <span class="badge">OpenAI API</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Database & Storage -->
-          <div class="skills-group card reveal">
-            <h3>
-              🗄️ Database
-            </h3>
-            <div class="badges">
-              <span class="badge">MongoDB</span>
-              <span class="badge">PostgreSQL</span>
-              <span class="badge">MySQL</span>
-              <span class="badge">Firebase</span>
-              <span class="badge">Supabase</span>
-            </div>
-          </div>
-
-          <!-- Automation -->
-          <div class="skills-group card reveal">
-            <h3>
-              🚀 Automation
-            </h3>
-            <div style="display:flex;flex-direction:column;gap:16px;">
-              <div>
-                <h4 style="font-weight:600;margin-bottom:8px;font-size:0.95rem;color:var(--muted);">🔌 Workflow</h4>
-                <div class="badges">
-                  <span class="badge">n8n</span>
-                  <span class="badge">Zapier</span>
-                  <span class="badge">Make.com</span>
-                  <span class="badge">IFTTT</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Development Tools -->
-          <div class="skills-group card reveal">
-            <h3>
-              🛠️ Dev Tools
-            </h3>
-            <div style="display:flex;flex-direction:column;gap:16px;">
-              <div>
-                <h4 style="font-weight:600;margin-bottom:8px;font-size:0.95rem;color:var(--muted);">🔀 Version Control
-                </h4>
-                <div class="badges">
-                  <span class="badge">Git</span>
-                  <span class="badge">GitHub</span>
-                  <span class="badge">GitLab</span>
-                </div>
-              </div>
-              <div>
-                <h4 style="font-weight:600;margin-bottom:8px;font-size:0.95rem;color:var(--muted);">📦 Managers</h4>
-                <div class="badges">
-                  <span class="badge">npm</span>
-                  <span class="badge">pip</span>
-                  <span class="badge">Homebrew</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Design -->
-          <div class="skills-group card reveal">
-            <h3>
-              🎨 Design
-            </h3>
-            <div style="display:flex;flex-direction:column;gap:16px;">
-              <div>
-                <h4 style="font-weight:600;margin-bottom:8px;font-size:0.95rem;color:var(--muted);">✏️ Tools</h4>
-                <div class="badges">
-                  <span class="badge">Figma</span>
-                  <span class="badge">Canva</span>
-                  <span class="badge">Photoshop</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Testing -->
-          <div class="skills-group card reveal">
-            <h3>
-              ✅ Testing
-            </h3>
-            <div class="badges">
-              <span class="badge">Jest</span>
-              <span class="badge">Pytest</span>
-              <span class="badge">Cypress</span>
-              <span class="badge">Selenium</span>
-            </div>
-          </div>
-
-          <!-- DevOps & Cloud (Medium/Large) -->
-          <div class="skills-group card reveal col-span-2">
-            <h3>
-              ☁️ DevOps &amp; Cloud
-            </h3>
+          <!-- 1. AI Systems & Autonomous Agents -->
+          <div class="skills-group card reveal col-span-2" data-skill-category="ai">
+            <h3>🧠 AI Systems &amp; Autonomous Agents</h3>
             <div class="skills-columns">
               <div>
-                <h4 style="font-weight:600;margin-bottom:8px;font-size:0.95rem;color:var(--muted);">🌐 Cloud Platforms
-                </h4>
-                <div class="badges">
-                  <span class="badge">AWS</span>
-                  <span class="badge">Google Cloud</span>
-                  <span class="badge">Vercel</span>
-                  <span class="badge">Netlify</span>
-                  <span class="badge">Render</span>
+                <h4 style="font-weight:600;margin-bottom:12px;font-size:0.95rem;color:var(--muted);">🤖 LLMs &amp; Agentic AI</h4>
+                <div class="pro-skills-grid">
+                  <div class="pro-skill-card" onclick="showRoadmap('OpenAI API')"><span>OpenAI API</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('LangChain')"><span>LangChain</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('RAG Systems')"><span>RAG Systems</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('Agentic AI')"><span>Agentic AI</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('HuggingFace')"><span>HuggingFace</span></div>
                 </div>
               </div>
               <div>
-                <h4 style="font-weight:600;margin-bottom:8px;font-size:0.95rem;color:var(--muted);">⚙️ DevOps Tools</h4>
-                <div class="badges">
-                  <span class="badge">Docker</span>
-                  <span class="badge">Kubernetes</span>
-                  <span class="badge">GitHub Actions</span>
-                  <span class="badge">Nginx</span>
+                <h4 style="font-weight:600;margin-bottom:12px;font-size:0.95rem;color:var(--muted);">⚡ Core ML &amp; Data Science</h4>
+                <div class="pro-skills-grid">
+                  <div class="pro-skill-card" onclick="showRoadmap('Python')"><span>Python</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('Pandas')"><span>Pandas</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('NumPy')"><span>NumPy</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('Scikit-learn')"><span>Scikit-learn</span></div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Full Stack Development (Largest) -->
-          <div class="skills-group card reveal col-span-3">
-            <h3>
-              💻 Full Stack Development
-            </h3>
-            <div class="skills-columns-3">
+          <!-- 2. Full Stack Web Development -->
+          <div class="skills-group card reveal col-span-2" data-skill-category="fullstack">
+            <h3>💻 Full-Stack Web Architectures</h3>
+            <div class="skills-columns">
               <div>
-                <h4 style="font-weight:600;margin-bottom:8px;font-size:0.95rem;color:var(--muted);">🖌️ Frontend</h4>
-                <div class="badges">
-                  <span class="badge">HTML5/CSS3</span>
-                  <span class="badge">React.js</span>
-                  <span class="badge">Next.js</span>
-                  <span class="badge">Vue.js</span>
-                  <span class="badge">Tailwind</span>
-                  <span class="badge">Framer</span>
+                <h4 style="font-weight:600;margin-bottom:12px;font-size:0.95rem;color:var(--muted);">🖌️ Modern Frontend</h4>
+                <div class="pro-skills-grid">
+                  <div class="pro-skill-card" onclick="showRoadmap('Next.js 14')"><span>Next.js 14</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('React.js')"><span>React.js</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('Tailwind')"><span>Tailwind</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('HTML5/CSS3')"><span>HTML5/CSS3</span></div>
                 </div>
               </div>
               <div>
-                <h4 style="font-weight:600;margin-bottom:8px;font-size:0.95rem;color:var(--muted);">🖥️ Backend</h4>
-                <div class="badges">
-                  <span class="badge">Node.js</span>
-                  <span class="badge">Express</span>
-                  <span class="badge">Django</span>
-                  <span class="badge">FastAPI</span>
-                  <span class="badge">REST APIs</span>
+                <h4 style="font-weight:600;margin-bottom:12px;font-size:0.95rem;color:var(--muted);">🖥️ High-Speed Backend</h4>
+                <div class="pro-skills-grid">
+                  <div class="pro-skill-card" onclick="showRoadmap('FastAPI')"><span>FastAPI</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('Node.js')"><span>Node.js</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('Express')"><span>Express</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('REST APIs')"><span>REST APIs</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. AI Workflows & Automation -->
+          <div class="skills-group card reveal" data-skill-category="automation">
+            <h3>🚀 AI Workflows &amp; Automation</h3>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+              <div>
+                <h4 style="font-weight:600;margin-bottom:12px;font-size:0.95rem;color:var(--muted);">🔌 Autonomous Pipelines</h4>
+                <div class="pro-skills-grid">
+                  <div class="pro-skill-card" onclick="showRoadmap('n8n')"><span>n8n</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('LangGraph')"><span>LangGraph</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('CrewAI')"><span>CrewAI</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('Zapier')"><span>Zapier</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Database & Vector Stores -->
+          <div class="skills-group card reveal" data-skill-category="db">
+            <h3>🗄️ Vector DBs &amp; Data Engines</h3>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+              <div>
+                <h4 style="font-weight:600;margin-bottom:12px;font-size:0.95rem;color:var(--muted);">⚡ Storage &amp; Embeddings</h4>
+                <div class="pro-skills-grid">
+                  <div class="pro-skill-card" onclick="showRoadmap('Pinecone')"><span>Pinecone</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('Supabase')"><span>Supabase</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('PostgreSQL')"><span>PostgreSQL</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('MongoDB')"><span>MongoDB</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. DevOps & Infrastructure -->
+          <div class="skills-group card reveal col-span-2" data-skill-category="devops">
+            <h3>☁️ DevOps &amp; Cloud Infrastructure</h3>
+            <div class="skills-columns">
+              <div>
+                <h4 style="font-weight:600;margin-bottom:12px;font-size:0.95rem;color:var(--muted);">🌐 Cloud &amp; Containers</h4>
+                <div class="pro-skills-grid">
+                  <div class="pro-skill-card" onclick="showRoadmap('AWS')"><span>AWS</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('Docker')"><span>Docker</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('Vercel')"><span>Vercel</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('GitHub Actions')"><span>GitHub Actions</span></div>
                 </div>
               </div>
               <div>
-                <h4 style="font-weight:600;margin-bottom:8px;font-size:0.95rem;color:var(--muted);">🔒 Security</h4>
-                <div class="badges">
-                  <span class="badge">JWT</span>
-                  <span class="badge">OAuth</span>
-                  <span class="badge">SSL/TLS</span>
-                  <span class="badge">CORS</span>
+                <h4 style="font-weight:600;margin-bottom:12px;font-size:0.95rem;color:var(--muted);">🛠️ Versioning &amp; Testing</h4>
+                <div class="pro-skills-grid">
+                  <div class="pro-skill-card" onclick="showRoadmap('Git')"><span>Git</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('GitHub')"><span>GitHub</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('Pytest')"><span>Pytest</span></div>
+                  <div class="pro-skill-card" onclick="showRoadmap('Jest')"><span>Jest</span></div>
                 </div>
               </div>
             </div>
@@ -254,6 +189,23 @@
           href="terms.html" class="copy-link">Terms &amp; Conditions</a></p>
     </div>
   </footer>
+
+  <!-- Roadmap Modal -->
+  <div id="roadmapModal" class="modal roadmap-modal" aria-hidden="true">
+    <div class="modal-content roadmap-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Roadmap: <span id="roadmapSkillName" class="highlight-text">Skill</span></h3>
+        <button class="typewriter-close" id="closeRoadmapBtn" aria-label="Close modal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body roadmap-body" id="roadmapStepsContainer">
+        <!-- Steps generated via JS -->
+      </div>
+    </div>
+  </div>
 
   <script src="script.js" defer></script>
 </body>
