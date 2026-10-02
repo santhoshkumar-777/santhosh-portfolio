@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Case Study & Architecture | Santhosh Kumar – Forward Deployed Engineer (FDE)</title>
+  <meta name="description" content="In-depth project showcase, AI system architecture, benchmarks, and feature breakdowns by Santhosh Kumar, Forward Deployed Engineer (FDE)." />
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <!-- 3D Three.js Background Canvas Container -->
+  <div id="webgl-canvas-container"></div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-badge">SK</div>
+        <span>Santhosh<span style="color: var(--cyan);">kumar</span></span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="index.html#fde-section" class="nav-link">Role</a></li>
+          <li><a href="index.html#about" class="nav-link">About</a></li>
+          <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="index.html#projects" class="btn btn-secondary btn-sm sfx-btn">
+          ➔ All Projects
+        </a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-top: clamp(5.5rem, 9vw, 7.5rem);">
+    <div class="container">
+      
+      <!-- Back Navigation & Category Pill -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+        <a href="index.html#projects" class="btn btn-secondary btn-sm sfx-btn">
+          ← Back to Project Gallery
+        </a>
+        <div style="display: flex; gap: 0.6rem; align-items: center;">
+          <span class="project-badge-pill" id="pd-badge" style="position: static;">Featured</span>
+          <span class="mono" id="pd-category" style="color: var(--cyan); font-size: 0.9rem;">AI & Intelligence</span>
+        </div>
+      </div>
+
+      <!-- Project Hero Header Card -->
+      <div class="glass-card" style="padding: 2.5rem; margin-bottom: 3rem;">
+        <h1 id="pd-title" style="font-size: clamp(2rem, 5vw, 2.8rem); margin-bottom: 0.5rem; letter-spacing: -0.02em;">
+          Project Title
+        </h1>
+        <p id="pd-tagline" class="gradient-text" style="font-size: clamp(1.05rem, 2.5vw, 1.3rem); font-weight: 600; margin-bottom: 2rem;">
+          Tagline & Mission
+        </p>
+
+        <!-- Project Hero Image Banner -->
+        <div style="position: relative; border-radius: 16px; overflow: hidden; height: clamp(220px, 45vw, 380px); margin-bottom: 2.5rem; border: 1px solid rgba(45, 35, 25, 0.12); box-shadow: 0 10px 30px rgba(60, 45, 30, 0.12);">
+          <img id="pd-hero-img" src="" alt="Project Preview" style="width: 100%; height: 100%; object-fit: cover;" />
+          <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(25, 22, 20, 0.4) 0%, transparent 60%);"></div>
+        </div>
+
+        <!-- Project Description & CTA -->
+        <div class="pd-summary-grid">
+          <div>
+            <h3 style="font-size: 1.4rem; margin-bottom: 1rem; color: var(--text-main);">Executive Summary</h3>
+            <p id="pd-full-desc" style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
+              Full project description loading...
+            </p>
+          </div>
+
+          <div class="glass-card" style="padding: 1.5rem; background: var(--bg-card);">
+            <h4 style="font-size: 1.1rem; margin-bottom: 1rem; color: var(--cyan);">Project Access</h4>
+            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+              <a id="pd-github-btn" href="https://github.com/santhoshkumar-777" target="_blank" rel="noopener noreferrer" class="btn btn-primary sfx-btn" style="width: 100%;">
+                <span>View Source on GitHub</span> 🐙
+              </a>
+              <a href="contact.html" class="btn btn-secondary sfx-btn" style="width: 100%;">
+                <span>Inquire About Architecture</span> 💬
+              </a>
+            </div>
+
+            <div style="margin-top: 1.5rem;">
+              <div style="font-size: 0.82rem; font-family: var(--font-mono); color: var(--text-dim); margin-bottom: 0.5rem;">ENGINEERED BY</div>
+              <div style="font-weight: 700; font-size: 0.95rem;">Santhosh Kumar</div>
+              <div style="color: var(--text-muted); font-size: 0.85rem;">AI Powered Full Stack Engineer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Performance Metrics Strip -->
+      <div style="margin-bottom: 3rem;">
+        <div style="font-family: var(--font-mono); color: var(--cyan); margin-bottom: 0.75rem;">// BENCHMARKS & VERIFIED METRICS</div>
+        <div class="stats-grid" id="pd-metrics-grid">
+          <!-- Populated by project-details.js -->
+        </div>
+      </div>
+
+      <!-- Two-Column Deep Dive: Features & Architecture -->
+      <div class="pd-deepdive-grid">
+        
+        <!-- Left: Key Features -->
+        <div class="glass-card">
+          <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.5rem;">
+            <span style="font-size: 1.5rem;">✨</span>
+            <h3 style="font-size: 1.4rem;">Core Capabilities & Features</h3>
+          </div>
+          <ul id="pd-features-list" style="list-style: none;">
+            <!-- Populated by project-details.js -->
+          </ul>
+        </div>
+
+        <!-- Right: Architecture Pipeline -->
+        <div class="glass-card">
+          <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.5rem;">
+            <span style="font-size: 1.5rem;">⚙️</span>
+            <h3 style="font-size: 1.4rem;">System Architecture Pipeline</h3>
+          </div>
+          <div id="pd-architecture-list">
+            <!-- Populated by project-details.js -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Skills Learned & Architectural Takeaways -->
+      <div class="glass-card" style="padding: 2.2rem; margin-bottom: 3rem; border-left: 4px solid #10b981;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 1.6rem;">💡</span>
+            <div>
+              <h3 style="font-size: 1.35rem; color: var(--text-main); margin-bottom: 0.2rem;">Skills & Concepts Learned in This Project</h3>
+              <p style="color: var(--text-muted); font-size: 0.92rem; margin: 0;">Verified hands-on competencies, system patterns, and architecture principles mastered during execution.</p>
+            </div>
+          </div>
+          <span style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: #059669; background: rgba(5, 150, 105, 0.1); border: 1px solid rgba(5, 150, 105, 0.25); padding: 0.25rem 0.75rem; border-radius: 999px;">
+            VERIFIED MASTERY
+          </span>
+        </div>
+        <div id="pd-skills-learned-grid" class="pd-skills-learned-container">
+          <!-- Populated by project-details.js -->
+        </div>
+      </div>
+      <div class="glass-card" style="padding: 2rem; margin-bottom: 4rem;">
+        <h3 style="font-size: 1.3rem; margin-bottom: 1.2rem; color: var(--text-main);">Technology Stack & Dependencies</h3>
+        <div id="pd-tech-tags" style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+          <!-- Populated by project-details.js -->
+        </div>
+      </div>
+
+      <!-- Quick Switcher to Other Projects -->
+      <div class="glass-card" style="padding: 2.5rem; text-align: center; margin-bottom: 4rem;">
+        <span class="section-tag">// EXPLORE ALL 12 SHOWCASES</span>
+        <h3 style="font-size: 1.6rem; margin: 0.5rem 0 1.5rem;">Jump to Another Case Study</h3>
+        <div id="pd-project-switcher" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem;">
+          <!-- Populated by project-details.js -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FLOATING HR QUICK MENU -->
+  <div class="hr-quick-menu">
+    <div class="hr-dropdown" id="hr-dropdown">
+      <div class="hr-dropdown-header">
+        <div class="hr-dropdown-title">🎯 Talent & Hiring VIP Hub</div>
+        <div class="hr-dropdown-subtitle">Santhosh Kumar – Direct Access</div>
+      </div>
+      <a href="mailto:santhoshkumar76670@gmail.com" class="hr-action-item sfx-btn">
+        <span>✉️</span> <span>Direct Email</span>
+      </a>
+      <a href="https://wa.me/917667080466?text=Hi%20Santhosh%2C%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20connect%20with%20you!" target="_blank" rel="noopener noreferrer" class="hr-action-item sfx-btn">
+        <span>💬</span> <span>WhatsApp Direct Chat</span>
+      </a>
+      <a href="https://linkedin.com/in/santhoshkumar-coder" target="_blank" rel="noopener noreferrer" class="hr-action-item sfx-btn">
+        <span>💼</span> <span>LinkedIn Profile</span>
+      </a>
+      <a href="https://github.com/santhoshkumar-777" target="_blank" rel="noopener noreferrer" class="hr-action-item sfx-btn">
+        <span>🐙</span> <span>GitHub Repositories</span>
+      </a>
+    </div>
+    <button class="hr-trigger-btn sfx-btn" id="hr-menu-trigger">
+      <span>🎯</span> <span>Talent & Hiring VIP Pass</span>
+    </button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding-top: 0;">
+        <div>© 2026 Santhosh Kumar. All rights reserved.</div>
+        <div>
+          <a href="index.html" style="color: var(--cyan); text-decoration: none; margin-right: 1.5rem;">Home</a>
+          <a href="contact.html" style="color: var(--cyan); text-decoration: none;">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/projects-data.js"></script>
+  <script src="assets/js/three-scene.js"></script>
+  <script src="assets/js/project-details.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

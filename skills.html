@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skills & Tech Arsenal | Santhosh Kumar – Forward Deployed Engineer (FDE)</title>
+  <meta name="description" content="Explore Santhosh Kumar's Forward Deployed Engineering (FDE) tech arsenal, core competencies in AI/ML, production RAG pipelines, Vector Databases, and full stack web architecture." />
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <!-- 3D Three.js Background Canvas Container -->
+  <div id="webgl-canvas-container"></div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-badge">SK</div>
+        <span>Santhosh<span style="color: var(--cyan);">kumar</span></span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="index.html#fde-section" class="nav-link">Role</a></li>
+          <li><a href="index.html#about" class="nav-link">About</a></li>
+          <li><a href="index.html#services" class="nav-link">Services</a></li>
+          <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="contact.html" class="btn btn-primary btn-sm sfx-btn">Get In Touch</a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-top: clamp(5.5rem, 9vw, 8rem);">
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">// DOMAIN ARSENAL & PROFICIENCIES</span>
+          <h1 class="section-title">Technical <span class="gradient-text">Competencies & Roadmaps</span></h1>
+          <p class="section-subtitle">A multi-layered breakdown of technologies, architectural patterns, and practical production expertise.</p>
+        </div>
+
+        <!-- Skills Domain Grid -->
+        <div class="bento-grid" style="margin-bottom: 4rem;">
+          
+          <!-- Domain 1: AI & ML -->
+          <div class="glass-card bento-col-6" data-roadmap="ai" style="cursor: pointer;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem;">
+              <div>
+                <span class="bento-badge-tag">AI / RAG</span>
+                <h2 style="font-size: 1.5rem; color: var(--text-main);">AI & Machine Learning</h2>
+              </div>
+              <button class="btn btn-secondary btn-sm sfx-btn" data-roadmap="ai">
+                <span>View Architecture</span> ➔
+              </button>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+              Engineered end-to-end intelligence systems with retrieval-augmented generation (RAG), embeddings, token optimization, and deep learning models.
+            </p>
+
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.88rem; margin-bottom: 0.35rem;">
+                  <span>RAG & Vector Knowledge Systems (ChromaDB / Qdrant)</span>
+                  <span class="mono" style="color: var(--cyan);">95%</span>
+                </div>
+                <div style="height: 6px; background: rgba(15,23,42,0.08); border-radius: 4px; overflow: hidden;">
+                  <div style="width: 95%; height: 100%; background: linear-gradient(90deg, var(--cyan), var(--purple));"></div>
+                </div>
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.88rem; margin-bottom: 0.35rem;">
+                  <span>LLM Agentic Pipelines (LangChain / Prompting)</span>
+                  <span class="mono" style="color: var(--cyan);">92%</span>
+                </div>
+                <div style="height: 6px; background: rgba(15,23,42,0.08); border-radius: 4px; overflow: hidden;">
+                  <div style="width: 92%; height: 100%; background: linear-gradient(90deg, var(--cyan), var(--purple));"></div>
+                </div>
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.88rem; margin-bottom: 0.35rem;">
+                  <span>Deep Learning (PyTorch, Time Series, NLP)</span>
+                  <span class="mono" style="color: var(--cyan);">88%</span>
+                </div>
+                <div style="height: 6px; background: rgba(15,23,42,0.08); border-radius: 4px; overflow: hidden;">
+                  <div style="width: 88%; height: 100%; background: linear-gradient(90deg, var(--cyan), var(--purple));"></div>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+              <span class="tech-pill">LangChain</span>
+              <span class="tech-pill">LlamaIndex</span>
+              <span class="tech-pill">ChromaDB</span>
+              <span class="tech-pill">OpenAI / Claude API</span>
+              <span class="tech-pill">HuggingFace</span>
+              <span class="tech-pill">PyTorch</span>
+              <span class="tech-pill">FastAPI</span>
+            </div>
+          </div>
+
+          <!-- Domain 2: Full Stack Web -->
+          <div class="glass-card bento-col-6" data-roadmap="web" style="cursor: pointer;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem;">
+              <div>
+                <span class="bento-badge-tag">FULL STACK</span>
+                <h2 style="font-size: 1.5rem; color: var(--text-main);">Full Stack Web Engineering</h2>
+              </div>
+              <button class="btn btn-secondary btn-sm sfx-btn" data-roadmap="web">
+                <span>View Architecture</span> ➔
+              </button>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+              Designing high-performance web systems with modern React/Next.js architectures, WebGL 3D graphics, resilient Node.js backends, and low latency.
+            </p>
+
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.88rem; margin-bottom: 0.35rem;">
+                  <span>React / Next.js / TypeScript Architecture</span>
+                  <span class="mono" style="color: var(--emerald);">96%</span>
+                </div>
+                <div style="height: 6px; background: rgba(15,23,42,0.08); border-radius: 4px; overflow: hidden;">
+                  <div style="width: 96%; height: 100%; background: linear-gradient(90deg, var(--emerald), var(--cyan));"></div>
+                </div>
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.88rem; margin-bottom: 0.35rem;">
+                  <span>Node.js / Express Microservices & REST/GraphQL</span>
+                  <span class="mono" style="color: var(--emerald);">94%</span>
+                </div>
+                <div style="height: 6px; background: rgba(15,23,42,0.08); border-radius: 4px; overflow: hidden;">
+                  <div style="width: 94%; height: 100%; background: linear-gradient(90deg, var(--emerald), var(--cyan));"></div>
+                </div>
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.88rem; margin-bottom: 0.35rem;">
+                  <span>Three.js WebGL 3D & CSS Glassmorphism</span>
+                  <span class="mono" style="color: var(--emerald);">90%</span>
+                </div>
+                <div style="height: 6px; background: rgba(15,23,42,0.08); border-radius: 4px; overflow: hidden;">
+                  <div style="width: 90%; height: 100%; background: linear-gradient(90deg, var(--emerald), var(--cyan));"></div>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+              <span class="tech-pill">Next.js 14+</span>
+              <span class="tech-pill">React</span>
+              <span class="tech-pill">TypeScript</span>
+              <span class="tech-pill">Three.js</span>
+              <span class="tech-pill">Node.js</span>
+              <span class="tech-pill">Express</span>
+              <span class="tech-pill">WebSockets</span>
+              <span class="tech-pill">TailwindCSS</span>
+            </div>
+          </div>
+
+          <!-- Domain 3: Databases & Cloud -->
+          <div class="glass-card bento-col-6" data-roadmap="database" style="cursor: pointer;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem;">
+              <div>
+                <span class="bento-badge-tag">DATABASES</span>
+                <h2 style="font-size: 1.5rem; color: var(--text-main);">Databases & Data Storage</h2>
+              </div>
+              <button class="btn btn-secondary btn-sm sfx-btn" data-roadmap="database">
+                <span>View Architecture</span> ➔
+              </button>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+              Managing relational integrity, vector similarity indexing, in-memory caching, and distributed document stores.
+            </p>
+
+            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+              <div class="stat-box" style="flex: 1 1 45%; padding: 1rem; text-align: left;">
+                <div style="font-weight: 700; color: var(--cyan);">PostgreSQL & Supabase</div>
+                <div style="font-size: 0.82rem; color: var(--text-muted);">Relational schemas, indexing, and pgvector extension.</div>
+              </div>
+              <div class="stat-box" style="flex: 1 1 45%; padding: 1rem; text-align: left;">
+                <div style="font-weight: 700; color: var(--emerald);">MongoDB & Mongoose</div>
+                <div style="font-size: 0.82rem; color: var(--text-muted);">Unstructured schemas & document aggregation pipelines.</div>
+              </div>
+              <div class="stat-box" style="flex: 1 1 45%; padding: 1rem; text-align: left;">
+                <div style="font-weight: 700; color: var(--purple);">Redis Cache</div>
+                <div style="font-size: 0.82rem; color: var(--text-muted);">In-memory locking, rate limiting & session stores.</div>
+              </div>
+              <div class="stat-box" style="flex: 1 1 45%; padding: 1rem; text-align: left;">
+                <div style="font-weight: 700; color: var(--amber);">ChromaDB & Vector DBs</div>
+                <div style="font-size: 0.82rem; color: var(--text-muted);">High-dimensional cosine and Euclidean embeddings.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Domain 4: DevOps & Tools -->
+          <div class="glass-card bento-col-6">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem;">
+              <div>
+                <span class="bento-badge-tag">DEVOPS</span>
+                <h2 style="font-size: 1.5rem; color: var(--text-main);">DevOps & Automation</h2>
+              </div>
+              <a href="https://github.com/santhoshkumar-777" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm sfx-btn">
+                <span>View Repos</span>
+              </a>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+              Workflow automation, containerization, browser extension development, and automated testing suites.
+            </p>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="glass-card" style="padding: 1rem;">
+                <div style="color: var(--cyan); font-weight: 700; margin-bottom: 0.3rem;">Git & CI/CD</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Automated deployment pipelines and branch workflows.</p>
+              </div>
+              <div class="glass-card" style="padding: 1rem;">
+                <div style="color: var(--emerald); font-weight: 700; margin-bottom: 0.3rem;">Browser Extensions</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Manifest V3 development with sandboxed workers.</p>
+              </div>
+              <div class="glass-card" style="padding: 1rem;">
+                <div style="color: var(--purple); font-weight: 700; margin-bottom: 0.3rem;">Linux & Shell</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Server orchestration and Bash automation scripts.</p>
+              </div>
+              <div class="glass-card" style="padding: 1rem;">
+                <div style="color: var(--pink); font-weight: 700; margin-bottom: 0.3rem;">API Testing</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Postman collections, OpenAPI Swagger schemas.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Problem Solving & Competitive Programming -->
+        <div class="glass-card" style="padding: 2.5rem; text-align: center; border-color: rgba(157, 78, 221, 0.3);">
+          <span class="section-tag">// DATA STRUCTURES & ALGORITHMS</span>
+          <h2 style="font-size: 2rem; margin: 0.5rem 0 1rem;">Algorithmic Rigor on LeetCode</h2>
+          <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto 2rem;">
+            Continuous problem solving focusing on Graphs, Dynamic Programming, Trees, Matrix Manipulation, and Space-Time complexity optimization.
+          </p>
+          <a href="https://leetcode.com/u/SanthoshKumar-777/" target="_blank" rel="noopener noreferrer" class="btn btn-purple sfx-btn">
+            <span>Explore LeetCode Profile (SanthoshKumar-777)</span> 🧠
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- INTERACTIVE ROADMAP MODAL -->
+  <div class="modal-overlay" id="roadmap-modal">
+    <div class="modal-content">
+      <button class="modal-close-btn">&times;</button>
+      <h3 id="roadmap-modal-title" style="font-size: 1.6rem; margin-bottom: 1.2rem;">Architecture Roadmap</h3>
+      <div id="roadmap-modal-body">
+        <!-- Injected via JavaScript -->
+      </div>
+      <div style="margin-top: 1.5rem; text-align: right;">
+        <button class="btn btn-primary btn-sm sfx-btn" onclick="document.getElementById('roadmap-modal').classList.remove('active'); document.body.style.overflow='';">Close Roadmap</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING HR QUICK MENU -->
+  <div class="hr-quick-menu">
+    <div class="hr-dropdown" id="hr-dropdown">
+      <div class="hr-dropdown-header">
+        <div class="hr-dropdown-title">🎯 Talent & Hiring VIP Hub</div>
+        <div class="hr-dropdown-subtitle">Santhosh Kumar – Direct Access</div>
+      </div>
+      <a href="mailto:santhoshkumar76670@gmail.com" class="hr-action-item sfx-btn">
+        <span>✉️</span> <span>Direct Email</span>
+      </a>
+      <a href="https://wa.me/917667080466?text=Hi%20Santhosh%2C%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20connect%20with%20you!" target="_blank" rel="noopener noreferrer" class="hr-action-item sfx-btn">
+        <span>💬</span> <span>WhatsApp Direct Chat</span>
+      </a>
+      <a href="https://linkedin.com/in/santhoshkumar-coder" target="_blank" rel="noopener noreferrer" class="hr-action-item sfx-btn">
+        <span>💼</span> <span>LinkedIn Profile</span>
+      </a>
+      <a href="https://github.com/santhoshkumar-777" target="_blank" rel="noopener noreferrer" class="hr-action-item sfx-btn">
+        <span>🐙</span> <span>GitHub Repositories</span>
+      </a>
+    </div>
+    <button class="hr-trigger-btn sfx-btn" id="hr-menu-trigger">
+      <span>🎯</span> <span>Talent & Hiring VIP Pass</span>
+    </button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding-top: 0;">
+        <div>© 2026 Santhosh Kumar. All rights reserved.</div>
+        <div>
+          <a href="index.html" style="color: var(--cyan); text-decoration: none; margin-right: 1.5rem;">Home</a>
+          <a href="contact.html" style="color: var(--cyan); text-decoration: none;">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/three-scene.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
